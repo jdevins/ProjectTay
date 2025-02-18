@@ -1,2 +1,3 @@
 .env
 src/web/dev.env
+node_modules

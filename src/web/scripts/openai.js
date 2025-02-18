@@ -1,6 +1,8 @@
 import fetch from "node-fetch";
 import { createRequire } from 'module';
 import { error } from "console";
+import * as dotenv from 'dev';
+dotenv.config();
 
 // Function to fetch a fun fact from the OpenAI API
 export async function getFunFact(funFact) {
@@ -55,6 +57,7 @@ export async function getFunFact(funFact) {
         }
 
         const response = await getResponse(url, headers, body);
+        
         //Errors
         if (!response.status===200) {
             console.error("Error retrieving data", response.status);
