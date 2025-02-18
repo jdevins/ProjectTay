@@ -1,3 +1,7 @@
+#Ignore Environment config files
 .env
 src/web/dev.env
-node_modules
+#Ignore Node_Modules
+.node_modules
+src/web/node_modules
+
