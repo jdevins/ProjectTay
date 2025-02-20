@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { createRequire } from 'module';
 import { error } from "console";
-import * as dotenv from 'dev';
+import * as dotenv from '../dev';
 dotenv.config();
 
 // Function to fetch a fun fact from the OpenAI API

@@ -1,0 +1,26 @@
+{
+  "name": "projecttay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdevins/ProjectTay.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdevins/ProjectTay/issues"
+  },
+  "homepage": "https://github.com/jdevins/ProjectTay#readme",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "esm": "^3.2.25",
+    "node-fetch": "^3.3.2",
+    "projecttay": "file:"
+  }
+}
