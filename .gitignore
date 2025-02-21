@@ -6,7 +6,6 @@ src\web\config\web.config
 .node_modules
 ./node_modules
 node_modules
-src/web/config/web.config
 src/web/config/dev.env
-src/api/config/api.config
-src/web/config/.env.development
+src/web/config/.env.web.development
+src/api/config/.env.api.development
