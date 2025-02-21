@@ -4,7 +4,7 @@ document.getElementById("AIFunFactBtn").addEventListener("click", function() {
     console.log("fetching fun fact");
     console.log("fun_fact: " + funFact);
     
-    async function fetchFunFact() {
+    /* async function fetchFunFact() {
         try {
             const response = await fetch("/ai/funfact", {
                 method: "POST",
@@ -19,7 +19,9 @@ document.getElementById("AIFunFactBtn").addEventListener("click", function() {
             console.error("Error fetching fun fact:", error);
             document.getElementById("funFactResult").innerText = "Web Failed to fetch fun fact", funFact;
         }
-    }
+    } */
 
+
+    
     fetchFunFact();
 });

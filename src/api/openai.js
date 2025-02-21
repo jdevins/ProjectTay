@@ -1,14 +1,17 @@
 import fetch from "node-fetch";
 import { createRequire } from 'module';
+import * as config from './config/external_config.json';
 import { error } from "console";
-import * as dotenv from '../dev';
+import dotenv from 'dotenv';
 dotenv.config();
 
 // Function to fetch a fun fact from the OpenAI API
 export async function getFunFact(funFact) {
     
     const require = createRequire(import.meta.url);
-    const config = require('../services/external_config.json');
+    const config1 = require('./config/external_config.json');
+    url = config.openai_url;
+    endpoint = config.openai_endpoint_chat_completions;
 
     // Check if the config file is missing any required fields.
     if (typeof config.openai_url == 'undefined' && config.openai_url == null && config.openai_url.trim() == '') {

@@ -12,7 +12,8 @@ app.use(cors()); // Use cors middleware to enable Cross-Origin Resource Sharing 
 
 
 // Routes
-app.get("api/status", (req, res) => {res.send("Things are looking good!");});
+app.get("api/v1/status", (req, res) => {res.send("Things are looking good!");});
+app.get("api/v1/openai/chatcompletion", (req, res) => {res.send(body);});
 
 
 // 404 Handler

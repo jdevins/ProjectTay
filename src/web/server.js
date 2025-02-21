@@ -1,18 +1,36 @@
-// Server.js is the entry point for the application. It creates an Express server and listens on port 3000.
+// Webserver setup
 import express from "express";
 import path from "path";
-import bodyParser from "body-parser"; // Import body-parser to parse JSON request bodies
-import cors from "cors"; // Import cors to enable Cross-Origin Resource Sharing (CORS)
-import { getFunFact } from "./scripts/openai.js";
+import bodyParser from "body-parser";
+import cors from "cors"; 
+import { getFunFact } from "../api/openai.js";
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
 
+//PATH ES6 Support
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Construct the path to your .env file
+const envPath = path.resolve(__dirname, './config/.env.development');
+
+// Configure dotenv with the custom path
+dotenv.config({ path: envPath });
+
+// Now you can access environment variables using process.env
+console.log(process.env.PORT); 
+
+//Express
 const app = express();
-const PORT = 3000;
-const __dirname = path.resolve();
 
+//Set Environment Variables
+const PORT = process.env.PORT;
+
+// Middleware
 app.use(cors()); // Use cors middleware to enable Cross-Origin Resource Sharing (CORS)
 app.use(bodyParser.json()); // Use body-parser middleware to parse JSON request bodies
 
-// Serve static files from the directories
+// Serve static files from directories
 app.use(express.static(path.join(__dirname)));
 app.use(express.static(path.join(__dirname, "css")));
 app.use(express.static(path.join(__dirname, "files")));
@@ -41,7 +59,6 @@ app.use((req, res) => {
 
 //favicon
 app.get("../favicon.ico", (req, res) => {res.sendFile(path.join(__dirname, "../files/favicon.png"));});
-
 
 // Port Listener
 app.listen(PORT, () => {
