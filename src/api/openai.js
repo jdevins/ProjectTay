@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import { createRequire } from 'module';
-import * as config from './config/external_config.json';
+import * as config from './config/external_config.json' with { type: "json"};
 import { error } from "console";
 import dotenv from 'dotenv';
 dotenv.config();
