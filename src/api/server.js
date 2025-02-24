@@ -1,10 +1,11 @@
-// Server.js is the entry point for the application. It creates an Express server and listens on port 3000.
+// API server on port 3000.
 import express from "express";
 import path from "path";
-import bodyParser from "body-parser"; // Import body-parser to parse JSON request bodies
-import cors from "cors"; // Import cors to enable Cross-Origin Resource Sharing (CORS)
+import bodyParser from "body-parser";
+import cors from "cors"; 
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import checkOnlineStatus from "./scripts/checkOnlineStatus.js";
 
 //PATH ES6 Support
 const __filename = fileURLToPath(import.meta.url);
@@ -19,17 +20,23 @@ const app = express();
 const PORT = process.env.PORT;
 
 // Middleware
-app.use(bodyParser.json()); // Use body-parser middleware to parse JSON request bodies
-app.use(cors()); // Use cors middleware to enable Cross-Origin Resource Sharing (CORS)
+app.use(bodyParser.json()); 
+app.use(cors());
 
 // Routes
-app.get("/", (req, res) => {res.send("You made it.");});
-app.get("/api/status", (req, res) => {res.send("Things are looking good!");});
+app.get("/", (req, res) => {res.send("You made it.  Check out our other services.");});
+app.get("/api/status", async (req, res) => {  
+  try {
+    const status = await checkOnlineStatus();
+    res.send(status);
+  } catch (error) {
+    res.status(500).send("Error checking status");
+  }});
 app.get("/api/v1/openai/chatcompletion", (req, res) => {res.send("Fake Chat Completion");});
 
 // 404 Handler
 app.use((req, res) => {
-  res.status(404).send("Status404");
+  res.status(404).send("404: Page not found");
 });
 
 // Port Listener

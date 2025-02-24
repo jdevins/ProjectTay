@@ -13,7 +13,6 @@ const __root = process.cwd();
 // Construct the path to your .env file
 const envvar = path.resolve(__dirname, './config/.env.web.development');
 dotenv.config({ path: envvar });
-console.log(envvar);
 
 //Express
 const app = express();
@@ -22,8 +21,8 @@ const app = express();
 const PORT = process.env.PORT;
 
 // Middleware
-app.use(cors()); // Use cors middleware to enable Cross-Origin Resource Sharing (CORS)
-app.use(bodyParser.json()); // Use body-parser middleware to parse JSON request bodies.
+app.use(cors()); // Enable Cross-Origin Resource Sharing (CORS)
+app.use(bodyParser.json()); // Parse JSON bodies
 
 // Serve static files from directories
 app.use(express.static(path.join(__dirname, "css")));
