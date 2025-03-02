@@ -1,5 +1,5 @@
-export function createDynamicJSON(properties, arrayData) {
-    const dynamicJSON = {};
+export function createDynamicJSON(properties, arrayData=[]) {
+    var dynamicJSON = {};
 
     // Add dynamic properties
     for (const key in properties) {
@@ -7,12 +7,12 @@ export function createDynamicJSON(properties, arrayData) {
             dynamicJSON[key] = properties[key];
         }
     }
-
-    // Add dynamic array
+   // Add dynamic array
+   if (!arrayData){ 
     dynamicJSON.items = [];
     for (const item of arrayData) {
         dynamicJSON.items.push(item);
+        }
     }
-
     return dynamicJSON;
 }

@@ -1,45 +1,51 @@
-// API server on port 3000.
 import express from "express";
 import path from "path";
 import bodyParser from "body-parser";
 import cors from "cors"; 
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
-import checkOnlineStatus from "./scripts/checkOnlineStatus.js";
+import { check_online_status } from "./scripts/check_online_status.js";
+import openai_routes from "./routes/openai_routes.js";
 
 //PATH ES6 Support
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename  = fileURLToPath(import.meta.url);
+const __dirname   = path.dirname(__filename);
 
-// Construct the path to your .env file
+// Construct the path to .env file
 const envPath = path.resolve(__dirname, './config/.env.api.development');
 dotenv.config({ path: envPath });
 
 //Initiate Server
 const app = express();
-const PORT = process.env.PORT;
+app.disable('x-powered-by');
+const ENV_URL = process.env.ENV_URL;
+const PORT    = process.env.PORT;
 
 // Middleware
 app.use(bodyParser.json()); 
 app.use(cors());
 
-// Routes
-app.get("/", (req, res) => {res.send("You made it.  Check out our other services.");});
-app.get("/api/status", async (req, res) => {  
+// General Routes
+app.get('/', (req, res) => {res.send("You made it.  Check out our other services.");});
+
+app.get('/api/status', async (req, res) => {  
   try {
-    const status = await checkOnlineStatus();
-    res.send(status);
+    const response = await check_online_status();
+    res.set("content-type",'application/json');
+    res.send(response);
   } catch (error) {
-    res.status(500).send("Error checking status");
+    res.status(500).send("Server error checking status");
   }});
-app.get("/api/v1/openai/chatcompletion", (req, res) => {res.send("Fake Chat Completion");});
+
+// Router Routes
+app.use('/api/v1/openai', openai_routes);
 
 // 404 Handler
 app.use((req, res) => {
-  res.status(404).send("404: Page not found");
+  res.status(404).send("404: In fairness, do any of us know where we're going?");
 });
 
 // Port Listener
 app.listen(PORT, () => {
-  console.log(`API server running at http://localhost:${PORT}/`);
+  console.log(`API server running at ${ENV_URL}${PORT}/`);
 });
