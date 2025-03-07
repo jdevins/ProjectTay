@@ -1,20 +1,20 @@
 import express from 'express';
-import { ChatController } from '../controllers/openai_chat_controller.js';
+import { Openai_chat_controller } from '../controllers/openai_chat_controller.js';
+import { Openai_chat_model } from '../models/openai_chat_model.js';
 
 const router = express.Router();
-const chatController = new ChatController();
+const Chat_controller = new Openai_chat_controller();
 
 router.post('/chat', async (req, res) => {
     const { developerRole, userRole, context, acceptanceCriteria } = req.body;
-    console.log("Request Body is: ", req.body);
-
-    if (!developerRole || !userRole || !context || !acceptanceCriteria) {
+    console.log("Inbound Request: ", req.body);
+    if ( !developerRole || !userRole || !context || !acceptanceCriteria) {
         return res.status(400).json({ error: 'Missing required fields' });
     }
     
     try {
-        const completion = await chatController.getChatCompletion(developerRole, userRole, context, acceptanceCriteria);
-        res.json({ completion });
+        const response = await Chat_controller.get_chat_completion(developerRole, userRole, context, acceptanceCriteria);
+        res.send({ response });
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch chat completion' });
     }

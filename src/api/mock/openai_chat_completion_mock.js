@@ -1,4 +1,4 @@
-{
+export const mock_openai_response = {
     "id": "chatcmpl-B6RVKknLMa8NYCFN1sS9d4fO2U7Mw",
     "object": "chat.completion",
     "created": 1740875394,

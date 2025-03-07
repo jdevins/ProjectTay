@@ -1,11 +1,12 @@
 import express from "express";
 import path from "path";
+import { fileURLToPath } from 'url';
 import bodyParser from "body-parser";
 import cors from "cors"; 
-import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { check_online_status } from "./scripts/check_online_status.js";
 import openai_routes from "./routes/openai_routes.js";
+import { connect } from "./shared/db_helper.js";
 
 //PATH ES6 Support
 const __filename  = fileURLToPath(import.meta.url);
@@ -28,9 +29,19 @@ app.use(cors());
 // General Routes
 app.get('/', (req, res) => {res.send("You made it.  Check out our other services.");});
 
+app.get('/api/v1/dbcheck', (req,res) =>{
+  try{
+    let response = connect();
+    res.send(response);
+  } catch (error){
+    res.status(500).send("Server error checking DB status");
+  }
+});
+  
+
 app.get('/api/status', async (req, res) => {  
   try {
-    const response = await check_online_status();
+    let response = await check_online_status();
     res.set("content-type",'application/json');
     res.send(response);
   } catch (error) {

@@ -3,6 +3,10 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import api_config from '../config/api_config.json' with {type:"json"};
+//import { request } from 'express';
+import { Openai_chat_model } from '../models/openai_chat_model.js';
+import { mock_openai_response } from '../mock/openai_chat_completion_mock.js';
+
 
 //PATH ES6 Support
 const __filename  = fileURLToPath(import.meta.url);
@@ -12,19 +16,20 @@ const __dirname   = path.dirname(__filename);
 const envPath = path.resolve(__dirname, '../config/.env.api.development');
 dotenv.config({ path: envPath });
 
-export class ChatController {
+export class Openai_chat_controller {
     constructor() {
         this.api_key = process.env.SECRET_OPENAI_TOKEN;
         this.api_url = api_config.openai_endpoint_chat_completions;
+        this.api_max_tokens = api_config.openai_endpoint_chat_completions_max_tokens;
         this.is_mock = api_config.openai_endpoint_chat_completions_is_mock;
     }
 
-    async getChatCompletion(developer_role, user_role, user_context, acceptance_criteria) {
-        console.log("Starting Chat Completion");
-        
+    async get_chat_completion(developerRole, userRole, context, acceptanceCriteria) {
+        console.log("Starting chat completion");
+        console.log("Outbound Request =",developerRole, userRole, context, acceptanceCriteria);
         //Return mocked response if setting in api_config is enabled
         if (this.is_mock==1){
-            return JSON.stringify({"mock": "mocked response"});
+            return (mock_openai_response);
         }
 
         //Make call to OpenAI
@@ -36,11 +41,11 @@ export class ChatController {
         const data = {
             model: 'gpt-4o-mini',
             messages: [
-                { role: 'developer', content: `You are a ${developer_role}.` },
-                { role: 'user', content: `As a ${user_role}, ${user_context}` },
-                { role: 'user', content: `Acceptance Criteria: ${acceptance_criteria}` },
+                { role: 'developer', content: `You are a ${developerRole}.` },
+                { role: 'user', content: `As a ${userRole}, ${context}` },
+                { role: 'user', content: `Acceptance Criteria: ${acceptanceCriteria}` },
             ],
-            max_completion_tokens: 100,
+            max_completion_tokens: this.api_max_tokens,
             temperature: 0.5
         };
         //console.log("Payload to OpenAI is: ", data);
@@ -48,9 +53,12 @@ export class ChatController {
         try {
             const response = await axios.post(this.api_url, data, { headers });
             if (response.status !== 200) {
-                throw new Error(`Connected system responded with: ${response.status}`);
+                throw new Error(`Connected, system responded with: ${response.status}`);
             }
-            return response.data.choices[0].message.content;
+            console.log("You used:",response.data.usage.total_tokens,"tokens");
+            const chat_model = new Openai_chat_model(response.data);
+            return chat_model;
+            
         } catch (error) {
             console.error('Error fetching chat completion:', error);
             throw error;
