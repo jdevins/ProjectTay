@@ -31,7 +31,7 @@ app.get('/', (req, res) => {res.send("You made it.  Check out our other services
 
 app.get('/api/v1/dbcheck', (req,res) =>{
   try{
-    let response = connect();
+    let response = connect(true);
     res.send(response);
   } catch (error){
     res.status(500).send("Server error checking DB status");

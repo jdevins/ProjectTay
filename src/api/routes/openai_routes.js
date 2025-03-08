@@ -7,11 +7,9 @@ const Chat_controller = new Openai_chat_controller();
 
 router.post('/chat', async (req, res) => {
     const { developerRole, userRole, context, acceptanceCriteria } = req.body;
-    console.log("Inbound Request: ", req.body);
     if ( !developerRole || !userRole || !context || !acceptanceCriteria) {
         return res.status(400).json({ error: 'Missing required fields' });
     }
-    
     try {
         const response = await Chat_controller.get_chat_completion(developerRole, userRole, context, acceptanceCriteria);
         res.send({ response });

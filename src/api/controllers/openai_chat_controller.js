@@ -48,7 +48,6 @@ export class Openai_chat_controller {
             max_completion_tokens: this.api_max_tokens,
             temperature: 0.5
         };
-        //console.log("Payload to OpenAI is: ", data);
 
         try {
             const response = await axios.post(this.api_url, data, { headers });

@@ -1,12 +1,11 @@
 import pg from 'pg'
 import dotenv from 'dotenv';
 dotenv.config();
-
-console.log("DB_SERVER", process.env.DB_SERVER);
 const { Client } = pg;
 
 
-export async function connect() { 
+//Connect to Database
+export async function connect(bool) { 
     const db_client = new Client({
         host: process.env.DB_SERVER,
         port: process.env.DB_PORT,
@@ -17,16 +16,20 @@ export async function connect() {
     
    
         await db_client.connect();
-        try{
-        const check = await db_client.query('Select Now()');
-        console.log(check.rows[0]);
-        return JSON.stringify(check.rows[0]);
-    //return db_client;
-    } catch (error) {
-        console.error("Error connecting".error);
-    } finally {
-        await db_client.end();
-        console.log("DB Connection Closed");
-    }
+    
+    //Call with Connect(true) to test connection    
+    if (bool == true) {            
+        try {
+            const check = await db_client.query('Select Now()');
+            const result = check.rows[0];
+            console.log("Database Connected at:",result);
+            return (result);
+        } catch (error) {
+            console.error("Error connecting".error);
+        } finally {
+            await db_client.end();
+            console.log("DB Connection Closed");
+        }
   }
-  connect();
+}
+  //connect();
