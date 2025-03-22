@@ -6,6 +6,7 @@ import api_config from '../config/api_config.json' with {type:"json"};
 //import { request } from 'express';
 import { Openai_chat_model } from '../models/openai_chat_model.js';
 import { mock_openai_response } from '../mock/openai_chat_completion_mock.js';
+import { Get_Chat_History } from '../models/db_op_openai_chat.js'
 
 
 //PATH ES6 Support
@@ -56,6 +57,8 @@ export class Openai_chat_controller {
             }
             console.log("You used:",response.data.usage.total_tokens,"tokens");
             const chat_model = new Openai_chat_model(response.data);
+            const db = await Get_Chat_History(chat_model);
+            console.log("Chat completion successful");
             return chat_model;
             
         } catch (error) {

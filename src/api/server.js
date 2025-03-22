@@ -29,16 +29,17 @@ app.use(cors());
 // General Routes
 app.get('/', (req, res) => {res.send("You made it.  Check out our other services.");});
 
-app.get('/api/v1/dbcheck', (req,res) =>{
-  try{
-    let response = connect(true);
+//Database Status
+app.get('/api/v1/dbcheck', async (req,res) => {
+  try {
+    let response = await connect(true);
     res.send(response);
-  } catch (error){
+  } catch (error) {
     res.status(500).send("Server error checking DB status");
   }
 });
   
-
+// System status
 app.get('/api/status', async (req, res) => {  
   try {
     let response = await check_online_status();
@@ -49,14 +50,14 @@ app.get('/api/status', async (req, res) => {
   }});
 
 // Router Routes
-app.use('/api/v1/openai', openai_routes);
+  app.use('/api/v1/openai', openai_routes);
 
 // 404 Handler
-app.use((req, res) => {
-  res.status(404).send("404: In fairness, do any of us know where we're going?");
-});
+  app.use((req, res) => {
+    res.status(404).send("404: In fairness, do any of us know where we're going?");
+  });
 
 // Port Listener
-app.listen(PORT, () => {
-  console.log(`API server running at ${ENV_URL}${PORT}/`);
-});
+  app.listen(PORT, () => {
+    console.log(`API server running at ${ENV_URL}${PORT}/`);
+  });

@@ -16,20 +16,23 @@ export async function connect(bool) {
     
    
         await db_client.connect();
+        console.log("Database Connection Opened");
     
     //Call with Connect(true) to test connection    
     if (bool == true) {            
         try {
-            const check = await db_client.query('Select Now()');
+            const check = await db_client.query('Select Now() as timestamp');
             const result = check.rows[0];
-            console.log("Database Connected at:",result);
-            return (result);
+            console.log(result);
+            if (result != undefined)
+            return ({type: "Database",status: "Successful", timestamp: result.timestamp});
+        else 
+            return ({type: "Database",status: "Database Connection Failed", timestamp: now()});
         } catch (error) {
             console.error("Error connecting".error);
         } finally {
             await db_client.end();
-            console.log("DB Connection Closed");
+            console.log("Database Connection Closed");
         }
   }
 }
-  //connect();
