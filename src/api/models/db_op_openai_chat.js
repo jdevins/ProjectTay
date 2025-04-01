@@ -13,11 +13,11 @@ export async function Get_Chat_History(){
     //Run Query
     try {
         console.log("executing query");
-        let response = connect.query(script);
-        console.log(response);
+        let qry_result = connect.query(script);
+        console.log(qry_result);
     } catch {
         console.error("Failed to Insert Chat History");
     }
     //Close Connection
-    await db_client.end();
+//    await connect.end();
 }

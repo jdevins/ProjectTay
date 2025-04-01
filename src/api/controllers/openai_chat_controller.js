@@ -50,17 +50,20 @@ export class Openai_chat_controller {
         };
 
         try {
-            
+            var response = '';
             //Return mocked response if setting in api_config is enabled
             if (this.is_mock==1){
-                return (mock_openai_response);
+                var response = mock_openai_response;
+                console.log("mocked response = ", response);
             } else { 
-                const response = await axios.post(this.api_url, data, { headers });
+                var response = await axios.post(this.api_url, data, { headers });
+                console.log("live response = ", response);
                 if (response.status !== 200) {
                 throw new Error(`Connected, system responded with: ${response.status}`);
                 }
             }
-            const chat_model = new Openai_chat_model(response.data);
+            console.log("response = ", response);
+            const chat_model = new Openai_chat_model(response);
             const get_response = await Get_Chat_History(chat_model);
             console.log(get_response);
             return chat_model;
