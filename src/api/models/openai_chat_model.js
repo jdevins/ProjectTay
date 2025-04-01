@@ -21,11 +21,19 @@ export class Openai_chat_model {
     Openai_chat_model.Message = class {
         constructor(message) {
             this.role = message.role || '';
-            this.content = message.content || '';
+            this.content = this.parseContent(message.content) || '';
             this.refusal = message.refusal || null;
         }
-    }
+    
+        parseContent(content) {
+            
+                let split = content.split("\n");
+                console.log("RESPONSE",split);
+                return split;
+            
 
+        }
+    }
     Openai_chat_model.Usage = class {
         constructor(usage) {
             this.prompt_tokens = usage.prompt_tokens || 0;

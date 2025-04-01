@@ -40,7 +40,7 @@ app.get('/api/v1/dbcheck', async (req,res) => {
 });
   
 // System status
-app.get('/api/status', async (req, res) => {  
+app.get('/api/v1/status', async (req, res) => {  
   try {
     let response = await check_online_status();
     res.set("content-type",'application/json');

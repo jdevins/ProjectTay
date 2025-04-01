@@ -1,6 +1,5 @@
 import express from 'express';
 import { Openai_chat_controller } from '../controllers/openai_chat_controller.js';
-import { Openai_chat_model } from '../models/openai_chat_model.js';
 
 const router = express.Router();
 const Chat_controller = new Openai_chat_controller();

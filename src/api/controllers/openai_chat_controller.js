@@ -19,20 +19,19 @@ dotenv.config({ path: envPath });
 
 export class Openai_chat_controller {
     constructor() {
-        this.api_key = process.env.SECRET_OPENAI_TOKEN;
-        this.api_url = api_config.openai_endpoint_chat_completions;
+        this.api_key        = process.env.SECRET_OPENAI_TOKEN;
+        this.api_url        = api_config.openai_endpoint_chat_completions;
         this.api_max_tokens = api_config.openai_endpoint_chat_completions_max_tokens;
-        this.is_mock = api_config.openai_endpoint_chat_completions_is_mock;
+        this.is_mock        = api_config.openai_endpoint_chat_completions_is_mock;
     }
 
     async get_chat_completion(developerRole, userRole, context, acceptanceCriteria) {
-        console.log("Starting chat completion");
-        console.log("Outbound Request =",developerRole, userRole, context, acceptanceCriteria);
-        //Return mocked response if setting in api_config is enabled
-        if (this.is_mock==1){
-            return (mock_openai_response);
-        }
 
+        //Return mocked response if setting in api_config is enabled
+/*         if (this.is_mock==1){
+            return (mock_openai_response);
+        } else { */ 
+        
         //Make call to OpenAI
         const headers = {
             'Content-Type': 'application/json',
@@ -51,21 +50,27 @@ export class Openai_chat_controller {
         };
 
         try {
-            const response = await axios.post(this.api_url, data, { headers });
-            if (response.status !== 200) {
+            
+            //Return mocked response if setting in api_config is enabled
+            if (this.is_mock==1){
+                return (mock_openai_response);
+            } else { 
+                const response = await axios.post(this.api_url, data, { headers });
+                if (response.status !== 200) {
                 throw new Error(`Connected, system responded with: ${response.status}`);
+                }
             }
-            console.log("You used:",response.data.usage.total_tokens,"tokens");
             const chat_model = new Openai_chat_model(response.data);
-            const db = await Get_Chat_History(chat_model);
-            console.log("Chat completion successful");
+            const get_response = await Get_Chat_History(chat_model);
+            console.log(get_response);
             return chat_model;
             
         } catch (error) {
             console.error('Error fetching chat completion:', error);
             throw error;
         }
-    }
+    //}
+}
 }
 
 
