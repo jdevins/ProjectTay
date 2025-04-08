@@ -18,9 +18,9 @@ dotenv.config({ path: envPath });
 
 //Initiate Server
 const app = express();
-app.disable('x-powered-by');
 const ENV_URL = process.env.ENV_URL;
 const PORT    = process.env.PORT;
+app.disable('x-powered-by');
 
 // Middleware
 app.use(bodyParser.json()); 
@@ -50,7 +50,14 @@ app.get('/api/v1/status', async (req, res) => {
   }});
 
 // Router Routes
-  app.use('/api/v1/openai', openai_routes);
+app.use('/api/v1/openai', openai_routes);
+
+
+//Admin Utilities
+app.get('/api/v1/admin', (req, res) => {
+  console.log("you hit Admin endpoint");
+  res.send("Admin Utilities");
+});
 
 // 404 Handler
   app.use((req, res) => {
