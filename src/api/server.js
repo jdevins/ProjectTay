@@ -31,7 +31,7 @@ app.get('/api', (req, res) => {res.send("Yep I'm here!");});
 app.get('/api/pulse', (req, res) => {res.send("Server is up!");});
 
 //Database Status
-app.get('/api/v1/dbcheck', async (req,res) => {
+  app.get('/api/v1/dbcheck', async (req,res) => {
   try {
     let response = await connect();
     if (response){
@@ -52,10 +52,10 @@ app.get('/api/v1/dbcheck', async (req,res) => {
   } catch (error) {
     res.status(500).send("Server error checking DB status");
   }
-});
+  });
   
 // System status
-app.get('/api/v1/status', async (req, res) => {  
+  app.get('/api/v1/status', async (req, res) => {  
   try {
     let response = await check_online_status();
     res.set("content-type",'application/json');
@@ -65,13 +65,13 @@ app.get('/api/v1/status', async (req, res) => {
   }});
 
 // Router Routes
-app.use('/api/v1/openai', openai_routes);
+  app.use('/api/v1/openai', openai_routes);
 
 //Admin Utilities
-app.get('/api/v1/admin', (req, res) => {
+  app.get('/api/v1/admin', (req, res) => {
   console.log("you hit Admin endpoint");
   res.send("Admin Utilities");
-});
+  });
 
 // 404 Handler
   app.use((req, res) => {
