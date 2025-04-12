@@ -1,3 +1,5 @@
+//Model to conform chat_completions response to a standard format.
+
 export class openai_chat_model {
     constructor(response) {
         this.id = response.id || '';
@@ -8,7 +10,6 @@ export class openai_chat_model {
         this.usage = response.usage ? new openai_chat_model.Usage(response.usage) : null;
     }
 }
-
     openai_chat_model.Choice = class {
         constructor(choice) {
             this.index = choice.index || 0;
@@ -17,7 +18,6 @@ export class openai_chat_model {
             this.finish_reason = choice.finish_reason || '';
         }
     }
-
     openai_chat_model.Message = class {
         constructor(message) {
             this.role = message.role || '';
@@ -26,7 +26,7 @@ export class openai_chat_model {
         }
     
         parseContent(content) { 
-                let response = content``; // Replace escaped newlines with actual newlines
+                let response = content; // ToDo: Add parsing logic if needed
                 return response;
         }
     }
@@ -38,4 +38,4 @@ export class openai_chat_model {
         }
     }
 
-export default openai_chat_model;
+export default openai_chat_model; 

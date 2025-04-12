@@ -1,7 +1,7 @@
 import { connect } from  "../shared/db_helper.js";
 
 export async function qry_get_chat_history(){
-    const script = 'SELECT * FROM chat_history';
+    const script = 'SELECT * FROM chat_history ORDER BY timestamp DESC LIMIT 25;';
     
     //Connect
     const client = await connect();  
@@ -28,8 +28,9 @@ export async function qry_insert_chat_history(chat_obj) {
             prompt_tokens,
             completion_tokens,
             total_tokens,
-            claim_check
-        ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`; 
+            claim_check,
+            timestamp
+        ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`; 
 
     const values = [
         chat_obj.vendor_Id,
@@ -39,7 +40,8 @@ export async function qry_insert_chat_history(chat_obj) {
         chat_obj.prompt_tokens,
         chat_obj.completion_tokens,
         chat_obj.total_tokens,
-        chat_obj.claim_check 
+        chat_obj.claim_check,
+        new Date().toISOString() 
     ];
     //Connect
     const client = await connect();  
@@ -47,6 +49,7 @@ export async function qry_insert_chat_history(chat_obj) {
     //Run Query
     try {
         const  qry_result = await client.query(script, values);
+        console.log('Records Insterted =',qry_result.rowCount);
         return qry_result.rows;
     } catch (error) {
         throw error;

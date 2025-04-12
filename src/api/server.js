@@ -27,13 +27,28 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // General Routes
-app.get('/', (req, res) => {res.send("You made it.  Check out our other services.");});
+app.get('/api', (req, res) => {res.send("Yep I'm here!");});
+app.get('/api/pulse', (req, res) => {res.send("Server is up!");});
 
 //Database Status
 app.get('/api/v1/dbcheck', async (req,res) => {
   try {
-    let response = await connect(true);
-    res.send(response);
+    let response = await connect();
+    if (response){
+      console.log('success',response.database);
+      var data = {
+        type: "DB Connection",
+        status: 'Pass'
+      } 
+      res.send(data);
+    } else {
+      console.log('fail',response.database);
+      var data = {
+        type: "DB Connection",
+        status: 'Fail'
+      }
+      res.status(500).send(data);
+    }
   } catch (error) {
     res.status(500).send("Server error checking DB status");
   }
@@ -51,7 +66,6 @@ app.get('/api/v1/status', async (req, res) => {
 
 // Router Routes
 app.use('/api/v1/openai', openai_routes);
-
 
 //Admin Utilities
 app.get('/api/v1/admin', (req, res) => {
