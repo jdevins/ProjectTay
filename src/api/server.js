@@ -7,6 +7,8 @@ import dotenv from 'dotenv';
 import { check_online_status } from "./scripts/check_online_status.js";
 import openai_routes from "./routes/openai_routes.js";
 import { connect } from "./shared/db_helper.js";
+import { set_redis_kv  } from "./middleware/redis.js";
+import { get_redis_kv  } from "./middleware/redis.js";
 
 //PATH ES6 Support
 const __filename  = fileURLToPath(import.meta.url);
@@ -29,6 +31,16 @@ app.use(cors());
 // General Routes
 app.get('/api', (req, res) => {res.send("Yep I'm here!");});
 app.get('/api/pulse', (req, res) => {res.send("Server is up!");});
+app.get('/api/kv', async (req, res) => {
+  try {
+  set_redis_kv('test_key','test_value');
+  get_redis_kv('test_key');
+  res.send("Key Value Stored in Redis");
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).send("Server error in Key Value Store");
+  }
+});
 
 //Database Status
   app.get('/api/v1/dbcheck', async (req,res) => {

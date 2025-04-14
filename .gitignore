@@ -9,3 +9,6 @@ node_modules
 src/web/config/dev.env
 src/web/config/.env.web.development
 src/api/config/.env.api.development
+src/api/config/compose.yaml
+compose.yaml
+redis.conf

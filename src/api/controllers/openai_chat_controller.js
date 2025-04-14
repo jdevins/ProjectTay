@@ -6,7 +6,7 @@ import api_config from '../config/api_config.json' with {type:"json"};
 //import { request } from 'express';
 import { openai_chat_model } from '../models/openai_chat_model.js';
 import { mock_openai_response } from '../mock/openai_chat_completion_mock.js';
-
+import { qry_insert_chat_history } from '../models/openai_chat_db.js';
 
 
  //PATH ES6 Support
@@ -36,7 +36,7 @@ export class openai_chat_controller {
         };
 
         //Request Body
-        const data = {
+        const body = {
             model: 'gpt-4o-mini',
             messages: [
                 { role: 'developer', content: `You are a ${developerRole}.` },
@@ -50,16 +50,19 @@ export class openai_chat_controller {
         try {
             var response = '';
             if (this.is_mock==1){
+                console.log("Mock response from OpenAI returned");
                 var response = mock_openai_response;
             } else { 
-                var response = await axios.post(this.api_url, data, { headers });
+                var response = await axios.post(this.api_url, body, { headers });
                 console.log("Live response from OpenAI returned");
                 if (response.status !== 200) {
                    throw new Error(`Connected, system responded with: ${response.status}`);
                 }
             }
-            const chat_model = new openai_chat_model(response);
-            return chat_model.choices[0].message.content; 
+            const chat_model = new openai_chat_model(response.data);
+            const query = await qry_insert_chat_history(chat_model);
+            return chat_model.choices[0].message.content;
+ 
         } catch (error) {
             console.error('Error fetching chat completion:', error);
             throw error;
@@ -67,29 +70,5 @@ export class openai_chat_controller {
     //}
 }
 
-/*     async get_chat_history() {
-        //Connect to Database
-        const client = await connect();  
-        const script = 'SELECT * FROM chat_history';
-        
-        //Run Query
-        try {
-            let qry_result = await client.query(script);
-            console.log(qry_result.rows);
-            return qry_result.rows;
-        } catch (error) {
-            console.error("Failed to Query Chat History", error);
-            throw new error;
-        } finally {
-            //Close Connection
-            await client.end();
-        }
-    } */
-
-    async insert_chat_history() {
-    console.log("Inserting Chat History");
-    const response = 'Placeholder for insert chat history';
-    return response;
-    }
 
 } //End of Class
