@@ -25,6 +25,7 @@
   "homepage": "https://github.com/jdevins/ProjectTay#readme",
   "dependencies": {
     "axios": "^1.8.1",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
