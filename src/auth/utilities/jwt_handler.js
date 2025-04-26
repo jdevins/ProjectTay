@@ -23,7 +23,6 @@
         return token;
     }
     
-    
     // Verify a JWT token  
     export async function verifyToken(token) {
         try {

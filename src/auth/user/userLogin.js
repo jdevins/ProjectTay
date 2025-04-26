@@ -1,53 +1,25 @@
-import { connect } from "../utilities/db_helper.js";
-import { generateToken,verifyToken } from "../utilities/jwt_handler.js";
-import bcrypt from 'bcrypt';
+//import { connect } from "../utilities/db_helper.js";
+import { findUserByName,confirmPassword } from "../models/userModel.js";
+import { generateToken } from "../utilities/jwt_handler.js"; // Import the generateToken function
 
 
 export async function userLogin(username,password) {
-    console.log('Verifying User...', username);
-    var passToken = '';
-    console.log(typeof passToken);
-
-    //Connect
-    const client = await connect();
-
-    //Query
-    const query = `SELECT password FROM users 
-                        WHERE username = $1;`
-    const values = [username];
-
-    try {
-        const results = await client.query(query, values);
-
-        if (results.rows.length > 0) {
-            const hash = results.rows[0].password;
-            passToken = hash.toString();
-            console.log("Retrieved passToken:", passToken);
-            console.log(typeof passToken);
-        } else {
-            return false;
-        }
-    } catch (error) {
-        console.error('No User Found:', error);
-        throw error;
-    } finally {
-        console.log('Closing database connection...'); 
-        client.end();
-    }   
-
-    // Check if the password matches the hashed password in the database
-    const isValid = await bcrypt.compare(password,passToken);
-    
-    if (isValid) {
-        console.log('Password is valid!');
-        // Generate a JWT token for the user
-        //const token = generateToken(username);
-        //console.log('Generated token:', token);
-        //return token; // Return the generated token
-        return true;
+    console.log('Starting UserName Exists...', username);
+    const exists = await findUserByName(username);
+    if (!exists) {
+        return false;
+    }
+    console.log('Starting Check Password...');
+    const pass = await confirmPassword(username,password);
+    if (!pass) {
+        return false;
+    }
+    console.log('Issue Token...');
+    const token = await generateToken(username);
+    if (!token) {
+        return false;
     } else {
-        console.log('Invalid password!');
-        return false; // Invalid password
+        return token;
     }
 }
-            
+

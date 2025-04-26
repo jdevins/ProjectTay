@@ -8,7 +8,7 @@ const { Client } = pg;
 //Connect to Database
 export async function connect() { 
     
-    console.log('Connecting to the database...');
+    console.log('___Connecting to the db...');
     const client = new Client({
         host:       process.env.DB_SERVER,
         port:       parseInt(process.env.DB_PORT),
@@ -19,7 +19,7 @@ export async function connect() {
     
     try {
         await client.connect();
-        console.log('Connected to the database successfully!');
+        console.log('___Connected to db good!');
         return client;
     } catch (error) {
         throw error;
