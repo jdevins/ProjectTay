@@ -6,7 +6,7 @@ import { expressjwt } from 'express-jwt';
 import { userLogin } from './user/userLogin.js';
 import { listUsers } from './models/userModel.js'; 
 import { validateUsername,registerUser } from './user/userRegister.js'; 
-import { verifyToken} from './utilities/jwt_handler.js';
+import { verifyToken,generateToken,generateRefreshToken} from './utilities/jwt_handler.js';
 import { banFilter } from './utilities/banned_text.js'; // Import the banFilter function
 
 
@@ -20,8 +20,8 @@ dotenv.config({ path: envPath });
 
 const app = express();
 
-// JWT Support
-const secret = process.env.SECRET_JWT_DEV_KEY;
+// JWT Support - AUTH Tokens only
+const secret = process.env.SECRET_AUTH_TOKEN_DEV_KEY;
 const jwtMiddleware = expressjwt({ secret, algorithms: ['HS256'] });
 
 // Other Middleware
@@ -29,42 +29,70 @@ app.use(express.json()); // Parse JSON bodies
 
 
 app.post('/auth/login', async (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    const token = await userLogin(username, password); 
-    
-    if (token) {
-      return res.status(200).json({ token: token });
+    if (!req.body.username || !req.body.password) {
+        return res.status(400).json({ error: 'Username and password are required.' });
+    } else {
+      const username = req.body.username;
+      const password = req.body.password;
+      const tokens = await userLogin(username, password); 
+    if (tokens) {
+      return res.status(200).json(tokens);
     } else {
       return res.status(401).json({ error: 'Invalid username or password.' });
     }
+  }
 });
 
-app.post('/auth/verifyToken', async (req, res) => {
+app.post('/auth/token/verify', async (req, res) => {
   console.log("Verifying token...");
   const token = req.body.token;
+
+  // Query Param simulates a distinct call from a refresh token caller.
+  const refreshParam = req.query.isRefreshToken.toLowerCase();
+  var isRefresh = JSON.parse(refreshParam); 
+  
+  if (!token) {
+    return res.status(400).json({ valid: false, error: 'Token is required.' });
+  }
   try {
-    const decoded = await verifyToken(token); 
+    const decoded = await verifyToken(token,isRefresh); 
     if (!decoded===false) {
-      const expDate = new Date(decoded.exp * 1000);
-      console.log("Token expiration date:", expDate);
-      return res.status(200).json({ valid: true, expires: expDate });
+      return res.status(200).json({ valid: true, decoded });
     } else{
-      return res.status(401).json({ valid: false, error: 'Invalid token.' });     
+      return res.status(401).json({ valid: false, error: 'Invalid token.'});     
     }
   } catch (error) {
     return res.status(401).json({ valid: false, error: 'Error performing token validation' });
   }
 });
 
-app.post('/auth/refreshToken', async (req, res) => {
-  res.send('Not Implemented (yet!)');
+app.post('/auth/token/refresh', async (req, res) => {
+  
+  const refreshToken = req.body.token;
+
+  const decoded = await verifyToken(refreshToken,true);
+  if (!decoded) {
+    return res.status(401).json({ valid: false, error: 'Invalid refresh token.' });
+  }
+  if (decoded.type == 'refresh') {
+    const authToken = await generateToken(decoded.username);
+    const refreshToken = await generateRefreshToken(decoded.username);
+    if (!authToken || !refreshToken) {
+      return res.status(401).json({ valid: false, error: 'Error generating new tokens.' });
+    }
+    return res.status(200).json({ authToken, refreshToken });
+  }
+  
+ //decode token
+  //get username from token
+  //generate new token
+  //return new token 
+  res.send({ refreshToken: refreshToken });
 });
 
 app.get('/auth/protected', jwtMiddleware, (req, res) => {
-  res.send('This is a protected route. You are authenticated with a Bearer token!');
+  res.status(200).send('This is a protected route. You are authenticated with a Bearer token!');
 });
-
 
 app.get('/auth/users', jwtMiddleware, async (req, res) => {
   // List all users
@@ -76,7 +104,7 @@ app.get('/auth/users', jwtMiddleware, async (req, res) => {
       console.error('Error fetching users:', error);
       res.status(500).json({ error: 'Internal server error' });
     }
-  });
+});
 
 app.post('/auth/users/create', async (req, res) => {
   const username = req.body.username;
@@ -107,7 +135,7 @@ app.post('/auth/users/create', async (req, res) => {
   }
 })
 
-app.get('/auth/checkbannedUsername', async (req, res) => {
+app.get('/auth/users/available', async (req, res) => {
   const username = req.body.username; 
   const bannedUsernames = banFilter(username); 
   if (bannedUsernames === true) {

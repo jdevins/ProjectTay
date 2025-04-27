@@ -13,32 +13,66 @@
     dotenv.config({ path: envPath });
     
     //Secret Key
-    const secret = process.env.SECRET_JWT_DEV_KEY;
+    const authSecret = process.env.SECRET_AUTH_TOKEN_DEV_KEY;
+    const refreshSecret = process.env.SECRET_REFRESH_TOKEN_DEV_KEY;
 
     // Generate a JWT token
     export async function generateToken(username) {
-        console.log("Generating token for user:", username); 
-        const token = jwt.sign({ username }, secret, { expiresIn: '1h' });
+        console.log("Generating auth token for user:", username); 
+        const tokenType = 'auth';
+        const token = jwt.sign({ username,tokenType }, authSecret, { expiresIn: '1h' });
         console.log("New token issued:", token); 
         return token;
     }
     
+    // Generate a JWT token
+    export async function generateRefreshToken(username) {
+        console.log("Generating refresh token for user:", username); 
+        const tokenType = 'refresh';
+        const token = jwt.sign({ username,tokenType }, refreshSecret, { expiresIn: '4h' });
+        console.log("Refresh token issued:", token); 
+        return token;
+    }
+
     // Verify a JWT token  
-    export async function verifyToken(token) {
+    export async function verifyToken(token,isRefresh) {
+  
+        if (isRefresh===true) {
+            console.log("Using refreshsecret");
+            var secret = refreshSecret;
+        } else {
+            console.log("Using authsecret");
+            var secret = authSecret;
+        }
         try {
+
+            //TODO: CHECK BLACKLIST
+                //Check Redis
+                //Check DB
+                //Return
+
             const decoded = jwt.verify(token, secret);
             console.log("Decoded token:", decoded);
-            //return decoded;
             if (!decoded) {
                 return false;
               }
+
+              const decodedToken ={
+                username: decoded.username,
+                type: decoded.tokenType,
+                exp: new Date(decoded.exp * 1000),
+                iat: new Date(decoded.iat * 1000),
+                }
+
               // Check if the token is expired
               if (decoded.exp * 1000 < Date.now()) {
-                return 'expired';
+                console.log( token.type," token is expired.");
+                return false;
               }
               // Token is valid and not expired
               console.log("Token is valid and not expired.");
-              return (decoded);
+              return (decodedToken);
+        
         } catch (error) {
             console.error('Token verification failed:', error);
             return false;;

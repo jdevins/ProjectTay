@@ -1,25 +1,40 @@
 //import { connect } from "../utilities/db_helper.js";
 import { findUserByName,confirmPassword } from "../models/userModel.js";
-import { generateToken } from "../utilities/jwt_handler.js"; // Import the generateToken function
+import { generateToken,generateRefreshToken } from "../utilities/jwt_handler.js"; // Import the generateToken function
 
 
 export async function userLogin(username,password) {
+    var authToken = '';
+    var refreshToken = '';
+
     console.log('Starting UserName Exists...', username);
-    const exists = await findUserByName(username);
-    if (!exists) {
+    const isAvailable = await findUserByName(username);
+    if (!isAvailable) {
         return false;
     }
+
     console.log('Starting Check Password...');
     const pass = await confirmPassword(username,password);
     if (!pass) {
         return false;
     }
+
     console.log('Issue Token...');
-    const token = await generateToken(username);
-    if (!token) {
+    authToken = await generateToken(username);
+    if (!authToken) {
         return false;
-    } else {
-        return token;
-    }
+    } 
+
+    console.log('Issue Refresh Token...');    
+    refreshToken = await generateRefreshToken(username);
+    if (!refreshToken) {
+        return false;
+    } 
+    
+    //Return Tokens
+    console.log("Token issued:", refreshToken);
+    console.log("--Login Success--"); 
+    return { authToken, refreshToken };
+
 }
 
