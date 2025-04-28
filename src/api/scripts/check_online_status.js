@@ -2,7 +2,7 @@ import axios from 'axios';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { performance } from 'perf_hooks';
-import { convert_milliseconds } from '../shared/time_utils.js';
+import { convert_milliseconds } from '../utils/time_utils.js';
 //import { createDynamicJSON } from '../shared/JSON_helper.js';
 import dotenv from 'dotenv';
 

@@ -1,4 +1,4 @@
-import { connect } from  "../shared/db_helper.js";
+import { connect } from  "../utils/db_helper.js";
 
 export async function qry_get_chat_history(){
     const script = 'SELECT * FROM chat_history ORDER BY timestamp DESC LIMIT 25;';
