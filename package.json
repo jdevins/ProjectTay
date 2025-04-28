@@ -5,11 +5,12 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "start": "node server.js",
     "nodemon": "nodemon server.js",
     "web": "node src/web/server.js",
     "api": "node src/api/server.js",
     "auth": "node src/auth/server.js",
-    "dev": "concurrently \"npm run api\" \"npm run web\" \"npm run auth\"",
+    "dev": "concurrently \"npm run nodemon\" \"npm run api\" \"npm run web\" \"npm run auth\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,7 +28,6 @@
     "axios": "^1.8.1",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
-    "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "esm": "^3.2.25",

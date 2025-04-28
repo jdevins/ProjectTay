@@ -4,9 +4,9 @@ import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { expressjwt } from 'express-jwt'; 
 import { userLogin } from './user/userLogin.js';
-import { listUsers } from './models/userModel.js'; 
+import { listUsers,findUserByID,findUserByName } from './models/userModel.js'; 
 import { validateUsername,registerUser } from './user/userRegister.js'; 
-import { verifyToken,generateToken,generateRefreshToken} from './utilities/jwt_handler.js';
+import { verifyToken,generateToken,generateRefreshToken } from './utilities/jwt_handler.js';
 import { banFilter } from './utilities/banned_text.js'; // Import the banFilter function
 
 
@@ -94,7 +94,7 @@ app.get('/auth/protected', jwtMiddleware, (req, res) => {
   res.status(200).send('This is a protected route. You are authenticated with a Bearer token!');
 });
 
-app.get('/auth/users', jwtMiddleware, async (req, res) => {
+app.get('/auth/users', async (req, res) => {
   // List all users
    try {
       const users = await listUsers(); // Assuming you have a function to list users
@@ -106,7 +106,22 @@ app.get('/auth/users', jwtMiddleware, async (req, res) => {
     }
 });
 
-app.post('/auth/users/create', async (req, res) => {
+app.get('/auth/user/:id', async (req, res) => {
+  const userId = req.params.id;
+  if (!userId) {
+    return res.status(400).json({ error: 'User ID is required.' });
+  }
+  try {
+    const user = await findUserByID(userId); // Assuming you have a function to list users
+    res.status(200).send(user);
+  }
+  catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.post('/auth/user', async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
   
@@ -135,17 +150,32 @@ app.post('/auth/users/create', async (req, res) => {
   }
 })
 
-app.get('/auth/users/available', async (req, res) => {
+app.get('/auth/utils/validate/username', async (req, res) => {
   const username = req.body.username; 
-  const bannedUsernames = banFilter(username); 
-  if (bannedUsernames === true) {
-    res.status(200).json({ username: username, allowed: true });
-  } else if (bannedUsernames === false) {
-    res.status(200).json({ username: username, allowed: false });
-  } else {
-    res.status(400).json({ error: 'Error checking banned usernames.' });
+
+  if (!username) {
+    return res.status(400).json({ error: 'Username is required.' });
+  }
+
+  try {
+    const isAvailable = await findUserByName(username);
+    if (isAvailable) {
+      return res.status(200).json({ username: username, available: false });
+    }
+
+    const isBanned = banFilter(username); 
+    if (isBanned) {
+      return res.status(200).json({ username: username, allowed: false });
+    } else {
+      return res.status(200).json({ username: username, allowed: true });
+    }
+  } catch (error) {
+    console.error('Error checking username availability:', error);
+    return res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+
 
 //Handle 404
 app.use((req, res) => {

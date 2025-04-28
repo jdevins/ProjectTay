@@ -10,7 +10,7 @@ export class User {
 
 export async function listUsers() {
     const client = await connect();
-    const query = 'SELECT username,created_timestamp FROM users';
+    const query = 'SELECT uuid,username,created_timestamp FROM users';
     
     try {
         const res = await client.query(query);
@@ -20,22 +20,41 @@ export async function listUsers() {
     } catch (error) {
         throw error;
     } finally {
-        client.end();
+        client.release();
     }   
 }
 
 export async function findUserByName(username) {
+
     const client = await connect();
-    const query = 'SELECT * FROM users WHERE username = $1';
+    const query = 'SELECT uuid,username,created_timestamp FROM users WHERE username = $1';
     const values = [username];
 
     try {
-        const res = await client.query(query, values);
-        return res.rows.length > 0; // Return true if user exists, false otherwise
+        const qry = await client.query(query, values);
+        const user = qry.rows[0]; 
+        return { user: user }; 
     } catch (error) {
         throw error;
     } finally {
-        client.end();
+        client.release();
+    }   
+}
+
+export async function findUserByID(userId) {
+    console.log("Finding user by ID:", userId);
+    const client = await connect();
+    const query = 'SELECT uuid,username,created_timestamp FROM users WHERE uuid = $1';
+    const values = [userId];
+
+    try {
+        const qry = await client.query(query, values);
+        const user = qry.rows[0];
+        return { user: user }; 
+    } catch (error) {
+        throw error;
+    } finally {
+        client.release();
     }   
 }
 
@@ -65,7 +84,7 @@ export async function insertUser(newUser) {
     } catch (error) {
         throw error;
     } finally {
-        await client.end();
+        await client.release();
     }
 }
 
@@ -95,7 +114,7 @@ export async function confirmPassword(username,password) {
             return error;
         } finally {
             console.log('Closing database connection...'); 
-            client.end();
+            client.release();
         }   
     
         // Check if the password matches the hashed password in the database

@@ -1,27 +1,38 @@
-import pg from 'pg'
+import pg from 'pg';
 import dotenv from 'dotenv';
+import path from "path";
+import { fileURLToPath } from 'url';
+
+//PATH ES6 Support
+const __filename  = fileURLToPath(import.meta.url);
+const __dirname   = path.dirname(__filename);
+
+// Construct the path to .env file
+const envPath = path.resolve(__dirname, '../config/.env.auth.development');
+dotenv.config({ path: envPath });
+
 
 dotenv.config();
-const { Client } = pg;
+const { Pool } = pg;
 
+// Create a connection pool
+const pool = new Pool({
+    host:       process.env.DB_SERVER,
+    port:       parseInt(process.env.DB_PORT),
+    user:       process.env.DB_USER,
+    password:   process.env.DB_PASSWORD,
+    database:   'auth'
+});
 
-//Connect to Database
-export async function connect() { 
-    
-    console.log('___Connecting to the db...');
-    const client = new Client({
-        host:       process.env.DB_SERVER,
-        port:       parseInt(process.env.DB_PORT),
-        user:       process.env.DB_USER,
-        password:   process.env.DB_PASSWORD,
-        database:   'auth'
-    });
-    
+// Connect to Database
+export async function connect() {
+    console.log('___Getting a connection from the pool...');
     try {
-        await client.connect();
-        console.log('___Connected to db good!');
+        const client = await pool.connect(); // Get a client from the pool
+        console.log('___Connection acquired from pool!');
         return client;
     } catch (error) {
+        console.error('___Error acquiring connection from pool:', error);
         throw error;
     }
 }

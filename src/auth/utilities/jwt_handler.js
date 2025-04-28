@@ -2,6 +2,7 @@
     import dotenv from 'dotenv';
     import path from 'path';
     import { fileURLToPath } from 'url';
+import { decode } from 'punycode';
     
     
     //PATH ES6 Support
@@ -51,8 +52,9 @@
                 //Check DB
                 //Return
 
-            const decoded = jwt.verify(token, secret);
-            console.log("Decoded token:", decoded);
+            const decodedToken = decodeToken(token);
+/*            const decoded = jwt.verify(token, secret);
+             console.log("Decoded token:", decoded);
             if (!decoded) {
                 return false;
               }
@@ -62,7 +64,7 @@
                 type: decoded.tokenType,
                 exp: new Date(decoded.exp * 1000),
                 iat: new Date(decoded.iat * 1000),
-                }
+                } */
 
               // Check if the token is expired
               if (decoded.exp * 1000 < Date.now()) {
@@ -76,6 +78,22 @@
         } catch (error) {
             console.error('Token verification failed:', error);
             return false;;
+        }
+    }
+
+    export async function decodeToken(token) {
+        try {
+            const decoded = jwt.decode(token);
+            const decodedToken = {
+                username: decoded.username,
+                type: decoded.tokenType,
+                exp: new Date(decoded.exp * 1000),
+                iat: new Date(decoded.iat * 1000),
+                }
+            return decodedToken;
+        } catch (error) {
+            console.error('Token decoding failed:', error);
+            return false;
         }
     }
     
