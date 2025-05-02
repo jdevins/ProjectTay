@@ -1,6 +1,6 @@
 //import { connect } from "../utilities/db_helper.js";
-import { findUserByName,confirmPassword } from "../models/userModel.js";
-import { generateToken,generateRefreshToken } from "../utilities/jwt_handler.js"; // Import the generateToken function
+import { findUserByName,confirmPassword } from "../models/userModel.js"; // Import the findUserByName and confirmPassword functions
+import token from '../utilities/jwt_handler.js'; // Import the generateToken function
 
 
 export async function userLogin(username,password) {
@@ -20,13 +20,13 @@ export async function userLogin(username,password) {
     }
 
     //console.log('Issue Token...');
-    authToken = await generateToken(username);
+    authToken = await token.generateToken(username);
     if (!authToken) {
         return false;
     } 
 
     //console.log('Issue Refresh Token...');    
-    refreshToken = await generateRefreshToken(username);
+    refreshToken = await token.generateRefreshToken(username);
     if (!refreshToken) {
         return false;
     } 
