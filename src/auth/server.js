@@ -6,8 +6,9 @@ import { expressjwt } from 'express-jwt';
 import { userLogin } from './user/userLogin.js';
 import { listUsers,findUserByID,findUserByName } from './models/userModel.js'; 
 import { validateUsername,registerUser } from './user/userRegister.js'; 
-import { verifyToken,generateToken,generateRefreshToken } from './utilities/jwt_handler.js';
+import token from './utilities/jwt_handler.js';
 import { banFilter } from './utilities/banned_text.js'; // Import the banFilter function
+
 
 
 //PATH ES6 Support
@@ -20,7 +21,7 @@ dotenv.config({ path: envPath });
 
 const app = express();
 
-// JWT Support - AUTH Tokens only
+// JWT Middleware - AUTH Tokens only
 const secret = process.env.SECRET_AUTH_TOKEN_DEV_KEY;
 const jwtMiddleware = expressjwt({ secret, algorithms: ['HS256'] });
 
@@ -48,18 +49,19 @@ app.post('/auth/token/verify', async (req, res) => {
   const token = req.body.token;
 
   // Query Param simulates a distinct call from a refresh token caller.
-  const refreshParam = req.query.isRefreshToken.toLowerCase();
-  var isRefresh = JSON.parse(refreshParam); 
-  
+  if (req.query.isRefreshToken) {
+    const refreshParam = req.query.isRefreshToken?.toLowerCase();
+    var isRefresh = JSON.parse(refreshParam); 
+  }
   if (!token) {
     return res.status(400).json({ valid: false, error: 'Token is required.' });
   }
   try {
-    const decoded = await verifyToken(token,isRefresh); 
-    if (!decoded===false) {
+    const decoded = await token.verifyToken(token, isRefresh); 
+    if (decoded) {
       return res.status(200).json({ valid: true, decoded });
-    } else{
-      return res.status(401).json({ valid: false, error: 'Invalid token.'});     
+    } else {
+      return res.status(401).json({ valid: false, error: 'Invalid token.' });     
     }
   } catch (error) {
     return res.status(401).json({ valid: false, error: 'Error performing token validation' });
@@ -67,27 +69,21 @@ app.post('/auth/token/verify', async (req, res) => {
 });
 
 app.post('/auth/token/refresh', async (req, res) => {
-  
   const refreshToken = req.body.token;
 
-  const decoded = await verifyToken(refreshToken,true);
+  const decoded = await token.verifyToken(refreshToken, true);
   if (!decoded) {
     return res.status(401).json({ valid: false, error: 'Invalid refresh token.' });
   }
   if (decoded.type == 'refresh') {
-    const authToken = await generateToken(decoded.username);
-    const refreshToken = await generateRefreshToken(decoded.username);
-    if (!authToken || !refreshToken) {
+    const authToken = await token.generateToken(decoded.username);
+    const newRefreshToken = await token.generateRefreshToken(decoded.username);
+    if (!authToken || !newRefreshToken) {
       return res.status(401).json({ valid: false, error: 'Error generating new tokens.' });
     }
-    return res.status(200).json({ authToken, refreshToken });
+    return res.status(200).json({ authToken, refreshToken: newRefreshToken });
   }
-  
- //decode token
-  //get username from token
-  //generate new token
-  //return new token 
-  res.send({ refreshToken: refreshToken });
+  res.send({ refreshToken });
 });
 
 app.get('/auth/protected', jwtMiddleware, (req, res) => {
@@ -148,7 +144,7 @@ app.post('/auth/user', async (req, res) => {
   } else {
     res.status(400).json({ error: 'Username already taken.' });
   }
-})
+});
 
 app.get('/auth/utils/validate/username', async (req, res) => {
   const username = req.body.username; 
@@ -174,8 +170,6 @@ app.get('/auth/utils/validate/username', async (req, res) => {
     return res.status(500).json({ error: 'Internal server error' });
   }
 });
-
-
 
 //Handle 404
 app.use((req, res) => {
