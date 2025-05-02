@@ -5,8 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "nodemon": "nodemon server.js",
+    "nodemon": "nodemon src/auth/server.js",
     "web": "node src/web/server.js",
     "api": "node src/api/server.js",
     "auth": "node src/auth/server.js",
