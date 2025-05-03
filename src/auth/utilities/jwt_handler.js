@@ -16,42 +16,38 @@ class Token {
         this.refreshSecret = process.env.SECRET_REFRESH_TOKEN_DEV_KEY;
     }
 
-    async generateToken(username) {
+    async generateAuthToken(username) {
         console.log("Generating auth token for user:", username);
         const tokenType = 'auth';
-        const token = jwt.sign({ username, tokenType }, this.authSecret, { expiresIn: '1h' });
+        const expiresIn = '1h'; 
+        const token = jwt.sign({ username, tokenType }, this.authSecret, { expiresIn }); // Removed 'exp' from payload
         console.log("New token issued:", token);
-        return token;
+        return { authToken:token, expiresAt: new Date(Date.now() + 60 * 60 * 1000).toISOString() }; // Calculate expiration time
     }
 
     async generateRefreshToken(username) {
         console.log("Generating refresh token for user:", username);
         const tokenType = 'refresh';
-        const token = jwt.sign({ username, tokenType }, this.refreshSecret, { expiresIn: '4h' });
+        const expiresIn = '4h'; 
+        const token = jwt.sign({ username, tokenType }, this.refreshSecret, { expiresIn }); // Removed 'exp' from payload
         console.log("Refresh token issued:", token);
-        return token;
+        return { refreshToken:token, expiresAt: new Date(Date.now() + 60 * 60 * 1000).toISOString() }
     }
 
     async verifyToken(token, isRefresh) {
         const secret = isRefresh ? this.refreshSecret : this.authSecret;
         console.log(`Using ${isRefresh ? 'refreshSecret' : 'authSecret'}`);
         try {
-            const decodedToken = this.decodeToken(token);
-
-            if (decodedToken.exp * 1000 < Date.now()) {
-                console.log(decodedToken.type, "token is expired.");
-                return false;
-            }
-
+            const decoded = jwt.verify(token, secret); // Verify the token's signature
             console.log("Token is valid and not expired.");
-            return decodedToken;
+            return decoded;
         } catch (error) {
-            console.error('Token verification failed:', error);
-            return false;
+            console.error('Token verification failed:', error.message);
+            return { valid: false, error: error.message }; // Return the error message
         }
     }
-
-    decodeToken(token) {
+    
+    async decodeToken(token) {
         try {
             const decoded = jwt.decode(token);
             return {
@@ -65,7 +61,7 @@ class Token {
             return false;
         }
     }
-
+    
     async cacheAuthToken(userId, authToken) {
         const key = `AUTH:Token:${userId}`; // Create a unique key for the user
         const expiration = 62 * 60; // 1 hour (2 min buffer)
