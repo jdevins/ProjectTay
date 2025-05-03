@@ -1,34 +1,25 @@
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import redis from './redis_helper.js';
 
 class Token {
     constructor() {
-        // Initialize environment variables
-        const __filename = fileURLToPath(import.meta.url);
-        const __dirname = path.dirname(__filename);
-        const envPath = path.resolve(__dirname, '../config/.env.auth.development');
-        dotenv.config({ path: envPath });
-
         this.authSecret = process.env.SECRET_AUTH_TOKEN_DEV_KEY;
+        this.authExp = process.env.ACCESS_TOKEN_EXPIRATION;
         this.refreshSecret = process.env.SECRET_REFRESH_TOKEN_DEV_KEY;
+        this.refreshExp = process.env.REFRESH_TOKEN_EXPIRATION;
     }
 
     async generateAuthToken(username) {
-        console.log("Generating auth token for user:", username);
         const tokenType = 'auth';
-        const expiresIn = '1h'; 
+        const expiresIn = this.authExp; 
         const token = jwt.sign({ username, tokenType }, this.authSecret, { expiresIn }); // Removed 'exp' from payload
-        console.log("New token issued:", token);
         return { authToken:token, expiresAt: new Date(Date.now() + 60 * 60 * 1000).toISOString() }; // Calculate expiration time
     }
 
     async generateRefreshToken(username) {
         console.log("Generating refresh token for user:", username);
         const tokenType = 'refresh';
-        const expiresIn = '4h'; 
+        const expiresIn = this.refreshExp;
         const token = jwt.sign({ username, tokenType }, this.refreshSecret, { expiresIn }); // Removed 'exp' from payload
         console.log("Refresh token issued:", token);
         return { refreshToken:token, expiresAt: new Date(Date.now() + 60 * 60 * 1000).toISOString() }
@@ -36,13 +27,13 @@ class Token {
 
     async verifyToken(token, isRefresh) {
         const secret = isRefresh ? this.refreshSecret : this.authSecret;
-        console.log(`Using ${isRefresh ? 'refreshSecret' : 'authSecret'}`);
+        log.info(`Using ${isRefresh ? 'refreshSecret' : 'authSecret'}`);
         try {
             const decoded = jwt.verify(token, secret); // Verify the token's signature
-            console.log("Token is valid and not expired.");
+            log.info("Token is valid and not expired.");
             return decoded;
         } catch (error) {
-            console.error('Token verification failed:', error.message);
+            log.error('Token verification failed:', error.message);
             return { valid: false, error: error.message }; // Return the error message
         }
     }
