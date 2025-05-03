@@ -84,7 +84,7 @@ export async function insertUser(newUser) {
     } catch (error) {
         throw error;
     } finally {
-        await client.release();
+        client.release();
     }
 }
 
@@ -118,7 +118,6 @@ export async function confirmPassword(username,password) {
         }   
     
         // Check if the password matches the hashed password in the database
-        console.log("HashedPass", hashedPassword);
         const isValid = await bcrypt.compare(password, hashedPassword);
         if (!isValid) {
             return false;

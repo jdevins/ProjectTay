@@ -14,23 +14,23 @@ class Redis {
                 port: 6379 
             });
             this.client.on('error', (err) => {
-                console.log('Redis Client Error:', err);
+                log.error('Redis Client Error:', err.code);
                 if (err.code === 'ECONNREFUSED') {
-                    console.error('Redis connection refused:', err);
+                    log.error('Redis connection refused:', err);
                 } else {
-                    console.error('Redis Client Error:', err);
+                    lof.error('Redis Client Error:', err);
                 }
             });
 
             await this.client.connect();
-            console.log('Redis client connected successfully');
+            log.info('Redis client connected successfully');
         } catch (error) {
             if (retries > 0) {
-                console.warn(`Redis connection failed. Retrying in ${delay}ms... (${retries} retries left)`);
+                log.warn(`Redis connection failed. Retrying in ${delay}ms... (${retries} retries left)`);
                 await new Promise((resolve) => setTimeout(resolve, delay));
                 await this.connectRedisWithRetry(retries - 1, delay);
             } else {
-                console.error('Failed to connect to Redis after multiple attempts. Exiting retry loop:', error);
+                log.error('Failed to connect to Redis after multiple attempts. Exiting retry loop:', error);
                 this.client = null; 
             }
         }
@@ -126,9 +126,9 @@ class Redis {
         if (this.client) {
             try {
                 await this.client.quit();
-                console.log('Redis connection closed gracefully.');
+                log.info('Redis connection closed gracefully.');
             } catch (error) {
-                console.error('Error closing Redis connection:', error);
+                log.error('Error closing Redis connection:', error);
             }
         }
     }
@@ -138,13 +138,13 @@ const redis = new Redis(); // Create an instance of the Redis class
 
 // Graceful shutdown
 process.on('SIGINT', async () => {
-    console.log('SIGINT received. Closing Redis connection...');
+    log.info('SIGINT received. Closing Redis connection...');
     await redis.closeConnection(); 
     process.exit(0);
 });
 
 process.on('SIGTERM', async () => {
-    console.log('SIGTERM received. Closing Redis connection...');
+    log.info('SIGTERM received. Closing Redis connection...');
     await redis.closeConnection(); 
     process.exit(0);
 });

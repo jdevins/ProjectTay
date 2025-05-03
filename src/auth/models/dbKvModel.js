@@ -1,6 +1,7 @@
 import { connect } from '../utilities/db_helper.js';
 
 export class DbKvStore {
+    
     static async set(key, value) {
         const client = await connect();
         const query = `
