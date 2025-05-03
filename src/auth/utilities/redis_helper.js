@@ -4,6 +4,7 @@ import { DbKvStore } from '../models/dbKVmodel.js'; // Import KeyValueStore clas
 class Redis {
     constructor() {
         this.client = null;
+        this.redisDown = global.redisDown; // Check if Redis is down globally
     }
 
     async connectRedisWithRetry(retries = 0, delay = 2000) {
@@ -133,24 +134,19 @@ class Redis {
     }
 }
 
-const redis = new Redis();
-try {
-await redis.connectRedisWithRetry();
-} catch (error) {
-    console.error('Error connecting to Redis:', error);
-}
+const redis = new Redis(); // Create an instance of the Redis class
 
 // Graceful shutdown
 process.on('SIGINT', async () => {
     console.log('SIGINT received. Closing Redis connection...');
-    await redis.closeConnection();
+    await redis.closeConnection(); 
     process.exit(0);
 });
 
 process.on('SIGTERM', async () => {
     console.log('SIGTERM received. Closing Redis connection...');
-    await redis.closeConnection();
+    await redis.closeConnection(); 
     process.exit(0);
 });
 
-export default redis;
+export default Redis;
