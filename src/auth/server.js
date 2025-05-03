@@ -1,26 +1,29 @@
 import express from 'express';
-import path from "path";
-import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
 import { expressjwt } from 'express-jwt'; 
 import { userLogin } from './user/userLogin.js';
 import { listUsers,findUserByID,findUserByName } from './models/userModel.js'; 
 import { validateUsername,registerUser } from './user/userRegister.js'; 
 import token from './utilities/jwt_handler.js';
-import { banFilter } from './utilities/banned_text.js'; // Import the banFilter function
-import Redis from './utilities/redis_helper.js'; // Import the Redis class
+import { banFilter } from './utilities/banned_text.js'; 
+import Redis from './utilities/redis_helper.js'; 
+import './utilities/logging.js'; // Logging available globally
+import { initializeEnv } from './utilities/env_helper.js'; 
 
+log.info('Server is starting...', {context: 'Server'});
 
-
-//PATH ES6 Support
-const __filename  = fileURLToPath(import.meta.url);
-const __dirname   = path.dirname(__filename);
-
-// Construct the path to .env file
-const envPath = path.resolve(__dirname, './config/.env.auth.development');
-dotenv.config({ path: envPath });
+// Initialize environment variables
+initializeEnv('./config/.env.auth.development');
 
 const app = express();
+
+// Log incoming requests
+app.use((req, res, next) => {
+    log.info(`Request: ${req.method} ${req.url}`, { context: 'AuthRoutes' });
+    res.on('finish', () => {
+        log.info(`Response: ${res.statusCode} for ${req.method} ${req.url}`);
+    });
+    next();
+});
 
 // JWT Middleware - AUTH Tokens only
 const secret = process.env.SECRET_AUTH_TOKEN_DEV_KEY;
@@ -30,7 +33,9 @@ const jwtMiddleware = expressjwt({ secret, algorithms: ['HS256'] });
 app.use(express.json()); // Parse JSON bodies
 
 app.post('/auth/login', async (req, res) => {
+    log.info('Login request received.', { context: 'Login Endpoint' });
     if (!req.body.username || !req.body.password) {
+        log.warn('Login failed: Missing username or password.', { context: 'Login Validation' });
         return res.status(400).json({ error: 'Username and password are required.' });
     } else {
       const username = req.body.username;
@@ -195,5 +200,5 @@ app.use((req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  log.info(`Auth is up, go for it! ${PORT}`);
 });
