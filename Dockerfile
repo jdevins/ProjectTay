@@ -12,7 +12,7 @@ EXPOSE 6379
 CMD ["redis-server", "/usr/local/etc/redis/redis.conf"]
 
 # Healthcheck
-HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD redis-cli ping || exit 1
+#HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD redis-cli ping || exit 1
 
 
 

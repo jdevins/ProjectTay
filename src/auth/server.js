@@ -8,6 +8,7 @@ import { listUsers,findUserByID,findUserByName } from './models/userModel.js';
 import { validateUsername,registerUser } from './user/userRegister.js'; 
 import token from './utilities/jwt_handler.js';
 import { banFilter } from './utilities/banned_text.js'; // Import the banFilter function
+import Redis from './utilities/redis_helper.js'; // Import the Redis class
 
 
 
@@ -27,7 +28,6 @@ const jwtMiddleware = expressjwt({ secret, algorithms: ['HS256'] });
 
 // Other Middleware
 app.use(express.json()); // Parse JSON bodies
-
 
 app.post('/auth/login', async (req, res) => {
     if (!req.body.username || !req.body.password) {
@@ -49,7 +49,7 @@ app.post('/auth/token/verify', async (req, res) => {
   const token = req.body.token;
 
   // Query Param simulates a distinct call from a refresh token caller.
-  if (req.query.isRefreshToken) {
+  if (req.query.isRefreshToken === true ) {
     const refreshParam = req.query.isRefreshToken?.toLowerCase();
     var isRefresh = JSON.parse(refreshParam); 
   }
@@ -57,7 +57,7 @@ app.post('/auth/token/verify', async (req, res) => {
     return res.status(400).json({ valid: false, error: 'Token is required.' });
   }
   try {
-    const decoded = await token.verifyToken(token, isRefresh); 
+    const decoded = await token.verifyMyToken(token, isRefresh); 
     if (decoded) {
       return res.status(200).json({ valid: true, decoded });
     } else {
@@ -76,7 +76,7 @@ app.post('/auth/token/refresh', async (req, res) => {
     return res.status(401).json({ valid: false, error: 'Invalid refresh token.' });
   }
   if (decoded.type == 'refresh') {
-    const authToken = await token.generateToken(decoded.username);
+    const authToken = await token.generateAuthToken(decoded.username);
     const newRefreshToken = await token.generateRefreshToken(decoded.username);
     if (!authToken || !newRefreshToken) {
       return res.status(401).json({ valid: false, error: 'Error generating new tokens.' });
@@ -168,6 +168,23 @@ app.get('/auth/utils/validate/username', async (req, res) => {
   } catch (error) {
     console.error('Error checking username availability:', error);
     return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.get('/auth/redis/test', async (req, res) => {
+  const redisInstance = new Redis(); // Create a new instance of the Redis class
+  const key = 'testKey';
+  const value = 'testValue';
+  try {
+    await redisInstance.connectRedisWithRetry();
+    await redisInstance.set(key, value); 
+    const retrievedValue = await redisInstance.get(key);
+    await redisInstance.delete(key); 
+    res.status(200).json({ message: 'Redis test successful', retrievedValue });
+  } catch (error) {
+    global.redisDown = true; 
+    console.error('Error interacting with Redis:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
