@@ -27,9 +27,9 @@ const log = winston.createLogger({
         }),
         new winston.transports.DailyRotateFile({
             filename: 'log_%DATE%._auth.log', // Add date pattern to filename
-            datePattern: 'YYYY-MM-DD', // Specify the date format
-            dirname: './logs', // Optional: specify directory for log files
-            maxFiles: '14d', // Optional: keep logs for the last 14 days
+            datePattern: 'YYYY-MM-DD', 
+            dirname: './logs',
+            maxFiles: '14d',
             format: printf((info) => JSON.stringify({
                 timestamp: info.timestamp,
                 level: info.level,
@@ -44,5 +44,6 @@ log.info('Logging initialized successfully.');
 
 // Attach the logger to the global object
 global.log = log;
+export default log; // Export the logger for use in other modules
 
 

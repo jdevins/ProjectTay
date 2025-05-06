@@ -26,13 +26,13 @@ const pool = new Pool({
 
 // Connect to Database
 export async function connect() {
-    console.log('___Getting a connection from the pool...');
+    log.info('___Getting a connection from the pool...');
     try {
         const client = await pool.connect(); // Get a client from the pool
-        console.log('___Connection acquired from pool!');
+        log.info('___Connection acquired from pool!');
         return client;
     } catch (error) {
-        console.error('___Error acquiring connection from pool:', error);
+        log.error('___Error acquiring connection from pool:', error);
         throw error;
     }
 }

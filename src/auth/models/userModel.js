@@ -42,7 +42,6 @@ export async function findUserByName(username) {
 }
 
 export async function findUserByID(userId) {
-    console.log("Finding user by ID:", userId);
     const client = await connect();
     const query = 'SELECT uuid,username,created_timestamp FROM users WHERE uuid = $1';
     const values = [userId];
@@ -59,7 +58,6 @@ export async function findUserByID(userId) {
 }
 
 export async function insertUser(newUser) {
-    console.log("BEGIN Inserting user:", newUser); 
     // Check if the user already exists 
 
     const query = `
@@ -72,7 +70,7 @@ export async function insertUser(newUser) {
     
     //Connect o DB
     const client = await connect();  
-    console.log("Connected to db");
+    
     //Run Query
     try {
         const qry_result = await client.query(query, values);
@@ -89,7 +87,6 @@ export async function insertUser(newUser) {
 }
 
 export async function confirmPassword(username,password) {
-        console.log('Checking Password...', password);
         var hashedPassword = '';
     
         //Connect
@@ -110,10 +107,10 @@ export async function confirmPassword(username,password) {
                 return false;
             }
         } catch (error) {
-            console.error('Error verifying username:', error);
+            log.error('Error verifying username:', error);
             return error;
         } finally {
-            console.log('Closing database connection...'); 
+            log.error('Closing database connection...'); 
             client.release();
         }   
     
