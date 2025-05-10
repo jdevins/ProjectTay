@@ -13,3 +13,4 @@ src/api/config/compose.yaml
 compose.yaml
 redis.conf
 src/auth/config/.env.auth.development
+logs/

@@ -15,6 +15,7 @@ class Redis {
             });
             this.client.on('error', (err) => {
                 log.error('Redis Client Error:', err.code);
+                global.redisDown = true;
                 if (err.code === 'ECONNREFUSED') {
                     log.error('Redis connection refused:', err);
                 } else {
