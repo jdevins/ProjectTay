@@ -35,7 +35,7 @@ app.use(express.json()); // Parse JSON bodies
 app.post('/auth/login', async (req, res) => {
     log.info('Login request received.', { context: 'Login Endpoint' });
     if (!req.body.username || !req.body.password) {
-        log.warn('Login failed: Missing username or password.', { context: 'Login Validation' });
+        log.warn('Login failed: Missing username or password.', { context: 'Login' });
         return res.status(400).json({ error: 'Username and password are required.' });
     } else {
       const username = req.body.username;
@@ -50,26 +50,32 @@ app.post('/auth/login', async (req, res) => {
 });
 
 app.post('/auth/token/verify', async (req, res) => {
-  console.log("Verifying token...");
-  const token = req.body.token;
-
-  // Query Param simulates a distinct call from a refresh token caller.
-  if (req.query.isRefreshToken === true ) {
-    const refreshParam = req.query.isRefreshToken?.toLowerCase();
-    var isRefresh = JSON.parse(refreshParam); 
-  }
-  if (!token) {
+  const tokenValue = req.body.token; // Renamed to avoid shadowing
+  if (!tokenValue) {
     return res.status(400).json({ valid: false, error: 'Token is required.' });
   }
+
+  let isRefresh = false; // Default to false
+  if (req.query.isRefreshToken) {
+    try {
+      isRefresh = JSON.parse(req.query.isRefreshToken.toLowerCase());
+    } catch (parseError) {
+      log.warn('Failed to parse isRefreshToken query parameter.', { context: 'Token Verification' });
+      return res.status(400).json({ valid: false, error: 'Invalid isRefreshToken query parameter.' });
+    }
+  }
+
   try {
-    const decoded = await token.verifyMyToken(token, isRefresh); 
+    log.info('/verify...', { context: 'Token Verification' });
+    const decoded = await token.verifyToken(tokenValue, isRefresh); // Now correctly calls the imported token object
     if (decoded) {
       return res.status(200).json({ valid: true, decoded });
     } else {
-      return res.status(401).json({ valid: false, error: 'Invalid token.' });     
+      return res.status(401).json({ valid: false, error: 'Invalid token.' });
     }
   } catch (error) {
-    return res.status(401).json({ valid: false, error: 'Error performing token validation' });
+    log.error('Error during token verification:', { error: error.message, stack: error.stack });
+    return res.status(500).json({ valid: false, error: 'Error performing token validation.' });
   }
 });
 
@@ -95,7 +101,7 @@ app.get('/auth/protected', jwtMiddleware, (req, res) => {
   res.status(200).send('This is a protected route. You are authenticated with a Bearer token!');
 });
 
-app.get('/auth/users', async (req, res) => {
+app.get('/auth/users', jwtMiddleware, async (req, res) => {
   // List all users
    try {
       const users = await listUsers(); // Assuming you have a function to list users
