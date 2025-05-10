@@ -1,7 +1,5 @@
-//import { connect } from "../utilities/db_helper.js";
-import { findUserByName,confirmPassword } from "../models/userModel.js"; // Import the findUserByName and confirmPassword functions
-import token from '../utilities/jwt_handler.js'; // Import the generateToken function
-
+import { findUserByName,confirmPassword } from "../models/userModel.js";
+import token from '../utilities/jwt_handler.js'; 
 
 export async function userLogin(username,password) {
     var authToken = '';
@@ -33,7 +31,7 @@ export async function userLogin(username,password) {
     
     //Return Tokens
     console.log("--Login Success--"); 
-    return {authToken, refreshToken} ;
+    return {authToken:authToken, refreshToken:refreshToken}; 
 
 }
 

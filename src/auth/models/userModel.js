@@ -9,13 +9,13 @@ export class User {
 }
 
 export async function listUsers() {
+    
     const client = await connect();
     const query = 'SELECT uuid,username,created_timestamp FROM users';
     
     try {
         const res = await client.query(query);
         const users = res.rows;
-        console.log("Users:", { users: users }); 
         return  { users: users }; 
     } catch (error) {
         throw error;
@@ -42,6 +42,7 @@ export async function findUserByName(username) {
 }
 
 export async function findUserByID(userId) {
+    
     const client = await connect();
     const query = 'SELECT uuid,username,created_timestamp FROM users WHERE uuid = $1';
     const values = [userId];
@@ -110,7 +111,7 @@ export async function confirmPassword(username,password) {
             log.error('Error verifying username:', error);
             return error;
         } finally {
-            log.error('Closing database connection...'); 
+            log.info('Closing database connection...'); 
             client.release();
         }   
     

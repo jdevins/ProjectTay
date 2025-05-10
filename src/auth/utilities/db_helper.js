@@ -26,7 +26,6 @@ const pool = new Pool({
 
 // Connect to Database
 export async function connect() {
-    log.info('___Getting a connection from the pool...');
     try {
         const client = await pool.connect(); // Get a client from the pool
         log.info('___Connection acquired from pool!');
