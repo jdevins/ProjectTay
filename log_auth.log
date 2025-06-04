@@ -525,3 +525,806 @@
 {"timestamp":"2025-05-07T14:45:31.807Z","level":"info","context":"General","message":"Environment variables initialized."}
 {"timestamp":"2025-05-07T14:45:31.816Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
 {"timestamp":"2025-05-09T23:13:46.167Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-02T01:33:31.640Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-02T01:33:31.643Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-02T01:33:31.644Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-02T01:33:31.650Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-02T01:33:44.227Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-02T01:33:49.987Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-02T01:33:49.990Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-02T01:33:49.991Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-02T01:33:49.997Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-02T01:34:16.434Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/login"}
+{"timestamp":"2025-06-02T01:34:16.446Z","level":"info","context":"Login Endpoint","message":"Login request received."}
+{"timestamp":"2025-06-02T01:34:16.526Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T01:34:16.585Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T01:34:16.586Z","level":"info","context":"General","message":"Closing database connection..."}
+{"timestamp":"2025-06-02T01:34:16.695Z","level":"info","context":"General","message":"Auth token issued"}
+{"timestamp":"2025-06-02T01:34:16.697Z","level":"info","context":"General","message":"Refresh token issued:"}
+{"timestamp":"2025-06-02T01:34:16.702Z","level":"info","context":"General","message":"Response: 200 for POST /auth/login"}
+{"timestamp":"2025-06-02T01:34:48.591Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify?isRefreshToken=true"}
+{"timestamp":"2025-06-02T01:34:48.592Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T01:34:48.593Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T01:34:48.595Z","level":"error","context":"General","message":"Invalid token signature."}
+{"timestamp":"2025-06-02T01:34:48.595Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify?isRefreshToken=true"}
+{"timestamp":"2025-06-02T01:44:04.104Z","level":"info","context":"AuthRoutes","message":"Request: GET /auth/redis/test"}
+{"timestamp":"2025-06-02T01:44:04.114Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:04.115Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:04.118Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:04.118Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:04.181Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:04.181Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:04.294Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:04.295Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:04.447Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:04.448Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:04.653Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:04.654Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:04.914Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:04.915Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:05.216Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:05.217Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:05.578Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:05.579Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:05.984Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:05.985Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:06.438Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:06.438Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:06.954Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:06.955Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:07.465Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:07.466Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:07.981Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:07.982Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:08.485Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:08.486Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:08.989Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:08.990Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:09.504Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:09.505Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:10.021Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:10.022Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:10.533Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:10.534Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:11.050Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:11.051Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:11.555Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:11.556Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:12.064Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:12.064Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:12.570Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:12.571Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:13.075Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:13.076Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:13.591Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:13.592Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:14.094Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:14.095Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:14.605Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:14.605Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:15.113Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:15.114Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:15.629Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:15.630Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:16.144Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:16.144Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:16.655Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:16.656Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:17.160Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:17.161Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:17.675Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:17.676Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:18.183Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:18.184Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:18.700Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:18.700Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:19.215Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:19.216Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:19.728Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:19.729Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:20.246Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:20.247Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:20.763Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:20.763Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:21.286Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:21.287Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:21.800Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:21.800Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:22.321Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:22.322Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:22.829Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:22.830Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:23.344Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:23.345Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:23.856Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:23.857Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:24.373Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:24.374Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:24.882Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:24.883Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:25.400Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:25.401Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:25.921Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:25.922Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:26.433Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:26.434Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:26.937Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:26.937Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:27.440Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:27.441Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:27.946Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:27.947Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:28.455Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:28.456Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:28.963Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:28.964Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:29.478Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:29.479Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:29.985Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:29.986Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:30.505Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:30.506Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:31.010Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:31.011Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:31.528Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:31.528Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:32.041Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:32.041Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:32.556Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:32.557Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:33.065Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:33.066Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:33.572Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:33.572Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:34.080Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:34.081Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:34.586Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:34.587Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:35.096Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:35.097Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:35.602Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:35.603Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:36.113Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:36.114Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:36.629Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:36.629Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:37.142Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:37.143Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:37.659Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:37.660Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:38.163Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:38.163Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:38.678Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:38.678Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:39.185Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:39.185Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:39.696Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:39.697Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:40.211Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:40.212Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:40.729Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:40.730Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:41.245Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:41.246Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:41.764Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:41.764Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:42.280Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:42.281Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:42.788Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:42.788Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:43.291Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:43.291Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:43.807Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:43.808Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:44.311Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:44.312Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:44.823Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:44.823Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:45.326Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:45.327Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:45.831Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:45.831Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:46.338Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:46.339Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:46.854Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:46.855Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:47.364Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:47.364Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:47.870Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:47.871Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:48.374Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:48.375Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:48.880Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:48.881Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:49.383Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:49.384Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:49.900Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:49.900Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:50.406Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:50.407Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:50.922Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:50.923Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:51.440Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:51.440Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:51.955Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:51.955Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:52.463Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:52.464Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:52.969Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:52.969Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:53.485Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:53.486Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:53.993Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:53.993Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:54.511Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:54.511Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:55.014Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:55.015Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:55.526Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:55.527Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:56.043Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:56.044Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:56.561Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:56.561Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:57.076Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:57.077Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:57.583Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:57.584Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:58.091Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:58.092Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:58.597Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:58.598Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:59.112Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:59.113Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:44:59.616Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:44:59.617Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:00.134Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:00.135Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:00.655Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:00.655Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:01.171Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:01.172Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:01.679Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:01.680Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:02.197Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:02.198Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:02.702Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:02.702Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:03.216Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:03.217Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:03.725Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:03.725Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:04.238Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:04.239Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:04.755Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:04.755Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:05.262Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:05.263Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:05.766Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:05.767Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:06.281Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:06.282Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:06.794Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:06.795Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:07.300Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:07.301Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:07.802Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:07.803Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:08.306Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:08.306Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:08.814Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:08.815Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:09.322Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:09.323Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:09.828Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:09.828Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:10.336Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:10.336Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:10.841Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:10.842Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:11.344Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:11.345Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:11.848Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:11.849Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:12.365Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:12.366Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:12.873Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:12.873Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:13.377Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:13.378Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:13.890Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:13.890Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:14.403Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:14.404Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:14.909Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:14.910Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:15.427Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:15.428Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:15.944Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:15.945Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:16.462Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:16.462Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:16.978Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:16.979Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:17.486Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:17.487Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:18.003Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:18.004Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:18.508Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:18.508Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:19.013Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:19.014Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:19.527Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:19.528Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:20.038Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:20.039Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:20.555Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:20.555Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:21.072Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:21.073Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:21.589Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:21.590Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:22.105Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:22.105Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:22.621Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:22.621Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:23.127Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:23.128Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:23.635Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:23.635Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:24.139Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:24.140Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:24.647Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:24.647Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:25.160Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:25.160Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:25.667Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:25.667Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:26.182Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:26.182Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:26.696Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:26.697Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:27.208Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:27.208Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:27.725Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:27.726Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:28.237Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:28.238Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:28.748Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:28.749Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:29.257Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:29.257Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:29.766Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:29.766Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:30.279Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:30.279Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:30.794Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:30.794Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:31.305Z","level":"error","context":"General","message":"Redis Client Error:"}
+{"timestamp":"2025-06-02T01:45:31.306Z","level":"error","context":"General","message":"Redis connection refused:"}
+{"timestamp":"2025-06-02T01:45:31.582Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-02T01:54:59.264Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-02T01:54:59.266Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-02T01:54:59.267Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-02T01:54:59.272Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-02T01:55:01.697Z","level":"info","context":"AuthRoutes","message":"Request: GET /auth/redis/test"}
+{"timestamp":"2025-06-02T01:55:01.725Z","level":"info","context":"General","message":"Redis client connected successfully"}
+{"timestamp":"2025-06-02T01:55:01.732Z","level":"info","context":"General","message":"Response: 200 for GET /auth/redis/test"}
+{"timestamp":"2025-06-02T02:01:51.967Z","level":"info","context":"AuthRoutes","message":"Request: GET /auth/redis/test"}
+{"timestamp":"2025-06-02T02:03:16.747Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-02T02:03:20.494Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-02T02:03:20.496Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-02T02:03:20.497Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-02T02:03:20.504Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-02T02:13:04.093Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-02T02:23:04.196Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-02T02:23:04.199Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-02T02:23:04.200Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-02T02:23:04.205Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-02T02:23:07.518Z","level":"info","context":"AuthRoutes","message":"Request: GET /auth/redis/test"}
+{"timestamp":"2025-06-02T02:23:14.842Z","level":"info","context":"General","message":"Redis client connected successfully"}
+{"timestamp":"2025-06-02T02:23:14.844Z","level":"info","context":"General","message":"Key set successfully in Redis:"}
+{"timestamp":"2025-06-02T02:23:14.846Z","level":"info","context":"General","message":"Key retrieved successfully from Redis:"}
+{"timestamp":"2025-06-02T02:23:14.847Z","level":"info","context":"General","message":"Key deleted successfully from Redis:"}
+{"timestamp":"2025-06-02T02:23:17.445Z","level":"info","context":"AuthRoutes","message":"Request: GET /auth/redis/test"}
+{"timestamp":"2025-06-02T02:23:17.453Z","level":"info","context":"General","message":"Redis client connected successfully"}
+{"timestamp":"2025-06-02T02:23:17.455Z","level":"info","context":"General","message":"Key set successfully in Redis:"}
+{"timestamp":"2025-06-02T02:23:17.457Z","level":"info","context":"General","message":"Key retrieved successfully from Redis:"}
+{"timestamp":"2025-06-02T02:23:17.458Z","level":"info","context":"General","message":"Key deleted successfully from Redis:"}
+{"timestamp":"2025-06-02T02:23:17.461Z","level":"info","context":"General","message":"Response: 200 for GET /auth/redis/test"}
+{"timestamp":"2025-06-02T02:27:34.899Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify?isRefreshToken=true"}
+{"timestamp":"2025-06-02T02:27:34.908Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T02:27:34.909Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:27:34.911Z","level":"error","context":"General","message":"Invalid token signature."}
+{"timestamp":"2025-06-02T02:27:34.912Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify?isRefreshToken=true"}
+{"timestamp":"2025-06-02T02:28:11.179Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:28:11.180Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T02:28:11.180Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:28:11.183Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:28:37.880Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:28:37.881Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T02:28:37.881Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:28:37.883Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:31:27.867Z","level":"info","context":"AuthRoutes","message":"Request: GET /auth/utils/validate/username"}
+{"timestamp":"2025-06-02T02:31:27.926Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T02:31:27.934Z","level":"info","context":"General","message":"Response: 200 for GET /auth/utils/validate/username"}
+{"timestamp":"2025-06-02T02:31:36.947Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/login"}
+{"timestamp":"2025-06-02T02:31:36.948Z","level":"info","context":"Login Endpoint","message":"Login request received."}
+{"timestamp":"2025-06-02T02:31:36.948Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T02:31:36.950Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T02:31:36.952Z","level":"info","context":"General","message":"Closing database connection..."}
+{"timestamp":"2025-06-02T02:31:37.046Z","level":"info","context":"General","message":"Auth token issued"}
+{"timestamp":"2025-06-02T02:31:37.049Z","level":"info","context":"General","message":"Refresh token issued:"}
+{"timestamp":"2025-06-02T02:31:37.051Z","level":"info","context":"General","message":"Response: 200 for POST /auth/login"}
+{"timestamp":"2025-06-02T02:31:53.187Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/refresh"}
+{"timestamp":"2025-06-02T02:31:53.188Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:31:53.190Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/refresh"}
+{"timestamp":"2025-06-02T02:31:58.011Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:31:58.012Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T02:31:58.012Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:31:58.012Z","level":"error","context":"General","message":"Invalid token signature."}
+{"timestamp":"2025-06-02T02:31:58.013Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:32:03.796Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/login"}
+{"timestamp":"2025-06-02T02:32:03.797Z","level":"info","context":"Login Endpoint","message":"Login request received."}
+{"timestamp":"2025-06-02T02:32:03.843Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T02:32:03.847Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T02:32:03.848Z","level":"info","context":"General","message":"Closing database connection..."}
+{"timestamp":"2025-06-02T02:32:03.947Z","level":"info","context":"General","message":"Auth token issued"}
+{"timestamp":"2025-06-02T02:32:03.948Z","level":"info","context":"General","message":"Refresh token issued:"}
+{"timestamp":"2025-06-02T02:32:03.950Z","level":"info","context":"General","message":"Response: 200 for POST /auth/login"}
+{"timestamp":"2025-06-02T02:32:07.388Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:32:07.389Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T02:32:07.389Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:32:07.391Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:33:10.251Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-02T02:33:12.933Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-02T02:33:12.936Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-02T02:33:12.937Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-02T02:33:12.942Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-02T02:33:21.069Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/login"}
+{"timestamp":"2025-06-02T02:33:21.081Z","level":"info","context":"Login Endpoint","message":"Login request received."}
+{"timestamp":"2025-06-02T02:33:21.163Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T02:33:21.172Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T02:33:21.173Z","level":"info","context":"General","message":"Closing database connection..."}
+{"timestamp":"2025-06-02T02:33:21.353Z","level":"info","context":"General","message":"Auth token issued"}
+{"timestamp":"2025-06-02T02:33:21.358Z","level":"info","context":"General","message":"Refresh token issued:"}
+{"timestamp":"2025-06-02T02:33:21.367Z","level":"info","context":"General","message":"Response: 200 for POST /auth/login"}
+{"timestamp":"2025-06-02T02:33:24.721Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:33:24.723Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T02:33:24.723Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:33:24.726Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:34:35.545Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-02T02:34:39.174Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-02T02:34:39.177Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-02T02:34:39.177Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-02T02:34:39.183Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-02T02:34:42.417Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:34:42.426Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T02:34:42.427Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:34:42.429Z","level":"warn","context":"General","message":"Invalid audience:"}
+{"timestamp":"2025-06-02T02:34:42.432Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:34:46.931Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/login"}
+{"timestamp":"2025-06-02T02:34:46.933Z","level":"info","context":"Login Endpoint","message":"Login request received."}
+{"timestamp":"2025-06-02T02:34:47.018Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T02:34:47.025Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T02:34:47.026Z","level":"info","context":"General","message":"Closing database connection..."}
+{"timestamp":"2025-06-02T02:34:47.180Z","level":"info","context":"General","message":"Auth token issued"}
+{"timestamp":"2025-06-02T02:34:47.183Z","level":"info","context":"General","message":"Refresh token issued:"}
+{"timestamp":"2025-06-02T02:34:47.185Z","level":"info","context":"General","message":"Response: 200 for POST /auth/login"}
+{"timestamp":"2025-06-02T02:34:50.811Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:34:50.812Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T02:34:50.812Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:34:50.814Z","level":"warn","context":"General","message":"Invalid audience:"}
+{"timestamp":"2025-06-02T02:34:50.814Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:36:02.623Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:36:02.625Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T02:36:02.625Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:36:02.626Z","level":"warn","context":"General","message":"Invalid audience:"}
+{"timestamp":"2025-06-02T02:36:02.627Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:36:04.644Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-02T02:36:09.194Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-02T02:36:09.196Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-02T02:36:09.197Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-02T02:36:09.202Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-02T02:36:11.405Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:36:11.419Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T02:36:11.420Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:36:11.430Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:37:54.214Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-02T02:37:57.839Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-02T02:37:57.844Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-02T02:37:57.845Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-02T02:37:57.857Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-02T02:37:59.926Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:37:59.939Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T02:37:59.940Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:37:59.946Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:38:40.155Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-02T02:38:43.812Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-02T02:38:43.816Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-02T02:38:43.817Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-02T02:38:43.825Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-02T02:38:47.236Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:38:47.245Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T02:38:47.246Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:38:47.254Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:41:14.906Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-02T02:41:19.845Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-02T02:41:19.847Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-02T02:41:19.848Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-02T02:41:19.854Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-02T02:41:26.699Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/login"}
+{"timestamp":"2025-06-02T02:41:26.709Z","level":"info","context":"Login Endpoint","message":"Login request received."}
+{"timestamp":"2025-06-02T02:41:26.769Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T02:41:26.776Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T02:41:26.777Z","level":"info","context":"General","message":"Closing database connection..."}
+{"timestamp":"2025-06-02T02:41:26.859Z","level":"info","context":"General","message":"Auth token issued"}
+{"timestamp":"2025-06-02T02:41:26.861Z","level":"info","context":"General","message":"Refresh token issued:"}
+{"timestamp":"2025-06-02T02:41:26.865Z","level":"info","context":"General","message":"Response: 200 for POST /auth/login"}
+{"timestamp":"2025-06-02T02:41:34.476Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:41:34.477Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T02:41:34.478Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:41:34.478Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-02T02:41:34.479Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:42:01.692Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-02T02:42:04.804Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-02T02:42:04.806Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-02T02:42:04.807Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-02T02:42:04.811Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-02T02:42:11.249Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/login"}
+{"timestamp":"2025-06-02T02:42:11.259Z","level":"info","context":"Login Endpoint","message":"Login request received."}
+{"timestamp":"2025-06-02T02:42:11.318Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T02:42:11.324Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-02T02:42:11.325Z","level":"info","context":"General","message":"Closing database connection..."}
+{"timestamp":"2025-06-02T02:42:11.404Z","level":"info","context":"General","message":"Auth token issued"}
+{"timestamp":"2025-06-02T02:42:11.406Z","level":"info","context":"General","message":"Refresh token issued:"}
+{"timestamp":"2025-06-02T02:42:11.409Z","level":"info","context":"General","message":"Response: 200 for POST /auth/login"}
+{"timestamp":"2025-06-02T02:42:15.637Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-02T02:42:15.638Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-02T02:42:15.639Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-02T02:42:15.639Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-02T02:42:15.640Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T02:35:59.413Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T02:35:59.463Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T02:35:59.463Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T02:35:59.471Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-04T02:35:59.477Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T02:36:08.286Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T02:36:08.287Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T02:36:08.287Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T02:36:08.288Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-04T02:36:08.289Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T02:36:13.601Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/login"}
+{"timestamp":"2025-06-04T02:36:13.602Z","level":"info","context":"Login Endpoint","message":"Login request received."}
+{"timestamp":"2025-06-04T02:36:13.693Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-04T02:36:13.714Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-04T02:36:13.715Z","level":"info","context":"General","message":"Closing database connection..."}
+{"timestamp":"2025-06-04T02:36:13.812Z","level":"info","context":"General","message":"Auth token issued"}
+{"timestamp":"2025-06-04T02:36:13.814Z","level":"info","context":"General","message":"Refresh token issued:"}
+{"timestamp":"2025-06-04T02:36:13.817Z","level":"info","context":"General","message":"Response: 200 for POST /auth/login"}
+{"timestamp":"2025-06-04T02:36:17.842Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T02:36:17.843Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T02:36:17.844Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T02:36:17.844Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-04T02:36:17.846Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T02:54:15.722Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T02:54:15.723Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T02:54:15.724Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T02:54:15.725Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-04T02:54:15.727Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:02:22.795Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:02:29.326Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:02:29.329Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:02:29.330Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:02:29.339Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-04T03:02:34.279Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:02:34.306Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:02:34.307Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T03:02:34.308Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-04T03:02:34.314Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:05:49.765Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:06:02.435Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:06:02.437Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:06:02.438Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:06:02.443Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-04T03:06:04.926Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:06:04.938Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:06:04.939Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T03:06:04.940Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-04T03:06:04.943Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:06:12.244Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/login"}
+{"timestamp":"2025-06-04T03:06:12.246Z","level":"info","context":"Login Endpoint","message":"Login request received."}
+{"timestamp":"2025-06-04T03:06:12.351Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-04T03:06:12.359Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-04T03:06:12.360Z","level":"info","context":"General","message":"Closing database connection..."}
+{"timestamp":"2025-06-04T03:06:12.512Z","level":"info","context":"General","message":"Auth token issued"}
+{"timestamp":"2025-06-04T03:06:12.514Z","level":"info","context":"General","message":"Refresh token issued:"}
+{"timestamp":"2025-06-04T03:06:12.518Z","level":"info","context":"General","message":"Response: 200 for POST /auth/login"}
+{"timestamp":"2025-06-04T03:06:15.692Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:06:15.693Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:06:15.694Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T03:06:15.694Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-04T03:06:15.695Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:12:50.487Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:12:55.421Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:12:55.424Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:12:55.425Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:12:55.431Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-04T03:12:58.085Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:12:58.095Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:12:58.097Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T03:12:58.098Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-04T03:12:58.101Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:13:01.425Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/login"}
+{"timestamp":"2025-06-04T03:13:01.426Z","level":"info","context":"Login Endpoint","message":"Login request received."}
+{"timestamp":"2025-06-04T03:13:01.507Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-04T03:13:01.514Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-04T03:13:01.516Z","level":"info","context":"General","message":"Closing database connection..."}
+{"timestamp":"2025-06-04T03:13:01.642Z","level":"info","context":"General","message":"Auth token issued"}
+{"timestamp":"2025-06-04T03:13:01.644Z","level":"info","context":"General","message":"Refresh token issued:"}
+{"timestamp":"2025-06-04T03:13:01.646Z","level":"info","context":"General","message":"Response: 200 for POST /auth/login"}
+{"timestamp":"2025-06-04T03:13:04.269Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:13:04.271Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:13:04.271Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T03:13:04.272Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-04T03:13:04.272Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:15:51.929Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:15:54.695Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:15:54.699Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:15:54.700Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:15:54.706Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-04T03:15:57.666Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/login"}
+{"timestamp":"2025-06-04T03:15:57.677Z","level":"info","context":"Login Endpoint","message":"Login request received."}
+{"timestamp":"2025-06-04T03:15:57.751Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-04T03:15:57.757Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-04T03:15:57.759Z","level":"info","context":"General","message":"Closing database connection..."}
+{"timestamp":"2025-06-04T03:15:57.898Z","level":"info","context":"General","message":"Auth token issued"}
+{"timestamp":"2025-06-04T03:15:57.903Z","level":"info","context":"General","message":"Refresh token issued:"}
+{"timestamp":"2025-06-04T03:15:57.913Z","level":"info","context":"General","message":"Response: 200 for POST /auth/login"}
+{"timestamp":"2025-06-04T03:16:00.041Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:16:00.043Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:16:00.043Z","level":"info","context":"General","message":"string"}
+{"timestamp":"2025-06-04T03:16:00.044Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T03:16:00.044Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-04T03:16:00.046Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:16:33.324Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:16:33.325Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:16:33.325Z","level":"info","context":"General","message":"string"}
+{"timestamp":"2025-06-04T03:16:33.325Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T03:16:33.325Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-04T03:16:33.326Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:18:06.451Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:18:09.245Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:18:09.249Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:18:09.250Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:18:09.255Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-04T03:18:11.385Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:18:11.396Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:18:11.397Z","level":"info","context":"General","message":"string"}
+{"timestamp":"2025-06-04T03:18:11.398Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T03:18:11.399Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-04T03:18:11.402Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:18:39.271Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:18:44.520Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:18:44.525Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:18:44.526Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:18:44.533Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-04T03:18:46.027Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:18:46.038Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:18:46.039Z","level":"info","context":"General","message":"string"}
+{"timestamp":"2025-06-04T03:18:46.040Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T03:18:46.041Z","level":"error","context":"General","message":"Error during token verification:"}
+{"timestamp":"2025-06-04T03:18:46.044Z","level":"info","context":"General","message":"Response: 500 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:20:04.260Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:20:08.038Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:20:08.040Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:20:08.041Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:20:08.047Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-04T03:20:10.119Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:20:10.129Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:20:10.130Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T03:20:10.140Z","level":"info","context":"General","message":"Decoded token for verification:"}
+{"timestamp":"2025-06-04T03:20:10.141Z","level":"info","context":"General","message":"Expected audience: localhostUsers, token audience: localhostUsers"}
+{"timestamp":"2025-06-04T03:20:10.142Z","level":"info","context":"General","message":"Expected issuer: localhost, token issuer: localhost"}
+{"timestamp":"2025-06-04T03:20:10.146Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:22:43.560Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:22:46.702Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:22:46.706Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:22:46.707Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:22:46.712Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-04T03:22:49.738Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:22:49.751Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:22:49.752Z","level":"info","context":"General","message":"Verifying token:"}
+{"timestamp":"2025-06-04T03:22:49.756Z","level":"info","context":"General","message":"Decoded token for verification:"}
+{"timestamp":"2025-06-04T03:22:49.757Z","level":"info","context":"General","message":"Expected audience: localhostUsers, token audience: localhostUsers"}
+{"timestamp":"2025-06-04T03:22:49.758Z","level":"info","context":"General","message":"Expected issuer: localhost, token issuer: localhost"}
+{"timestamp":"2025-06-04T03:22:49.762Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:25:37.261Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:25:40.174Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:25:40.177Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:25:40.178Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:25:40.185Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-04T03:25:43.025Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:25:43.037Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:25:43.044Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:26:42.426Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/login"}
+{"timestamp":"2025-06-04T03:26:42.428Z","level":"info","context":"Login Endpoint","message":"Login request received."}
+{"timestamp":"2025-06-04T03:26:42.509Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-04T03:26:42.518Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-04T03:26:42.519Z","level":"info","context":"General","message":"Closing database connection..."}
+{"timestamp":"2025-06-04T03:26:42.652Z","level":"info","context":"General","message":"Auth token issued"}
+{"timestamp":"2025-06-04T03:26:42.656Z","level":"info","context":"General","message":"Refresh token issued:"}
+{"timestamp":"2025-06-04T03:26:42.657Z","level":"info","context":"General","message":"Response: 200 for POST /auth/login"}
+{"timestamp":"2025-06-04T03:26:47.854Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:26:47.856Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:26:47.857Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:28:10.925Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:28:13.613Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:28:13.617Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:28:13.618Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:28:13.623Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-04T03:28:15.754Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:28:15.769Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:28:15.780Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:28:51.363Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:28:54.927Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:28:54.931Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:28:54.932Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:28:54.939Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-04T03:28:57.497Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:28:57.510Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:28:57.520Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:30:13.444Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:30:16.625Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:30:16.630Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:30:16.631Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:30:16.639Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-04T03:30:21.992Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/login"}
+{"timestamp":"2025-06-04T03:30:22.005Z","level":"info","context":"Login Endpoint","message":"Login request received."}
+{"timestamp":"2025-06-04T03:30:22.087Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-04T03:30:22.094Z","level":"info","context":"General","message":"___Connection acquired from pool!"}
+{"timestamp":"2025-06-04T03:30:22.096Z","level":"info","context":"General","message":"Closing database connection..."}
+{"timestamp":"2025-06-04T03:30:22.259Z","level":"info","context":"General","message":"Auth token issued"}
+{"timestamp":"2025-06-04T03:30:22.264Z","level":"info","context":"General","message":"Refresh token issued:"}
+{"timestamp":"2025-06-04T03:30:22.271Z","level":"info","context":"General","message":"Response: 200 for POST /auth/login"}
+{"timestamp":"2025-06-04T03:31:08.807Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:31:08.808Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:31:08.811Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:32:26.676Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:32:29.930Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:32:29.935Z","level":"info","context":"Server","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:32:29.936Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:32:29.944Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-04T03:32:32.912Z","level":"info","context":"AuthRoutes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:32:32.927Z","level":"info","context":"Token Verification","message":"/verify..."}
+{"timestamp":"2025-06-04T03:32:32.937Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:40:40.273Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:40:43.429Z","level":"info","context":"General","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:40:43.433Z","level":"info","context":"Startup","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:40:43.434Z","level":"info","context":"General","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:40:43.439Z","level":"info","context":"General","message":"Auth is up, go for it! 3000"}
+{"timestamp":"2025-06-04T03:43:26.654Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:43:32.133Z","level":"info","context":"Startup","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:43:32.137Z","level":"info","context":"Startup","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:43:32.138Z","level":"info","context":"EnvHelper","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:43:32.143Z","level":"info","context":"Startup","message":"Auth is up on 3000, Go for it!"}
+{"timestamp":"2025-06-04T03:43:44.083Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:43:46.839Z","level":"info","context":"Startup","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:43:46.842Z","level":"info","context":"Startup","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:43:46.843Z","level":"info","context":"Startup","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:43:46.851Z","level":"info","context":"Startup","message":"Auth is up on 3000, Go for it!"}
+{"timestamp":"2025-06-04T03:46:32.024Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:46:35.317Z","level":"info","context":"Startup","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:46:35.320Z","level":"info","context":"Startup","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:46:35.321Z","level":"info","context":"Startup","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:46:35.327Z","level":"info","context":"Startup","message":"Auth is up on 3000, Go for it!"}
+{"timestamp":"2025-06-04T03:46:37.966Z","level":"info","context":"Routes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:46:37.987Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:47:28.154Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
+{"timestamp":"2025-06-04T03:47:32.976Z","level":"info","context":"Startup","message":"Logging initialized successfully."}
+{"timestamp":"2025-06-04T03:47:32.979Z","level":"info","context":"Startup","message":"Server is starting..."}
+{"timestamp":"2025-06-04T03:47:32.981Z","level":"info","context":"Startup","message":"Environment variables initialized."}
+{"timestamp":"2025-06-04T03:47:32.986Z","level":"info","context":"Startup","message":"Auth is up on 3000, Go for it!"}
+{"timestamp":"2025-06-04T03:47:35.236Z","level":"info","context":"Routes","message":"Request: POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:47:35.253Z","level":"info","context":"General","message":"Response: 200 for POST /auth/token/verify"}
+{"timestamp":"2025-06-04T03:48:14.598Z","level":"info","context":"General","message":"SIGINT received. Closing Redis connection..."}
