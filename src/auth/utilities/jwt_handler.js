@@ -17,56 +17,65 @@ class Token {
     //Not DRY but keeps them distinct across all references.
     async generateAuthToken(username) {
         const tokenType = 'auth';
-        const expiresIn = this.authExp; // 1d,30d, etc.
+        const expiresIn = this.authExp;
         const token = jwt.sign(
-            { username, tokenType, issuer: this.issuer, audience: this.audience, jti: this.jti }, 
-            this.authSecret, 
-            { expiresIn }
-        ); 
-        const tokenExp = new Date(Date.now() + 60 * 60 * 1000).toISOString(); 
+            { username, tokenType }, // Only custom claims in payload
+            this.authSecret,
+            {
+                expiresIn,
+                issuer: this.issuer,
+                audience: this.audience,
+                jwtid: crypto.randomUUID()
+            }
+        );
+        const tokenExp = new Date(Date.now() + 60 * 60 * 1000).toISOString();
         log.info("Auth token issued");
         return { token, tokenExp }; 
     }
-
+    
     //Not DRY but keeps them distinct across all references.
     async generateRefreshToken(username) {
         const tokenType = 'refresh';
         const expiresIn = this.refreshExp;
         const token = jwt.sign(
-            { username, tokenType, issuer: this.issuer, audience: this.audience,jti: this.jti }, 
-            this.refreshSecret, 
-            { expiresIn }
-        ); 
+            { username, tokenType },
+            this.refreshSecret,
+            {
+                expiresIn,
+                issuer: this.issuer,
+                audience: this.audience,
+                jwtid: crypto.randomUUID()
+            }
+        );
         const tokenExp = new Date(Date.now() + 60 * 60 * 1000).toISOString();
-        log.info("Refresh token issued:");
+        log.info("Refresh token issued");
         return { token, tokenExp };
     }
 
+    // Token verification
     async verifyToken(token, isRefresh) {
-        log.info("Verifying token:", token);
+
         const secret = isRefresh ? this.refreshSecret : this.authSecret;
 
         try {
-            const verified = jwt.verify(token, secret); // Verify signature and expiration
-
-            // Additional validation
+            const verified = jwt.verify(token, secret);
+            
+            //Check claims
             if (verified.aud !== this.audience) {
+                log.warn("Invalid audience:", verified.aud);
                 return { valid: false, error: 'Invalid audience.' };
             }
             if (verified.iss !== this.issuer) {
+                log.warn("Invalid issuer:", verified.iss);
                 return { valid: false, error: 'Invalid issuer.' };
             }
             if (isRefresh && verified.tokenType !== 'refresh') {
                 return { valid: false, error: 'Not a refresh token' };
             }
-
-            // Check for revocation
-            const isRevoked = await Redis.get(`REVOKED.TOKEN:${token}`);
-            if (isRevoked) {
-                return { valid: false, error: 'Token has been revoked.' };
-            }
-
-            return verified;
+            
+            //Success
+            return { valid: true, exp: new Date(verified.exp * 1000) };
+            
         } catch (error) {
             if (error.name === 'TokenExpiredError') {
                 log.warn("Token is expired.");
@@ -103,9 +112,9 @@ class Token {
         try {
             await Redis.set(key, authToken); 
             await Redis.expire(key, expiration);
-            console.log(`Auth token cached for user ${userId} with 1-hour expiration.`);
+            log.info(`Auth token cached for user ${userId} with 1-hour expiration.`);
         } catch (error) {
-            console.error('Error caching auth token:', error);
+            log.error('Error caching auth token:', error);
         }
     }
 
@@ -115,9 +124,9 @@ class Token {
         try {
             await Redis.set(key, token); 
             await Redis.expire(key, expiration);
-            console.log(`Token revoked and cached for 1 hour.`);
+            log.info(`Token revoked and cached for 1 hour.`);
         } catch (error) {
-            console.error('Error revoking token:', error);
+            log.error('Error revoking token:', error);
         }
     }
 }
