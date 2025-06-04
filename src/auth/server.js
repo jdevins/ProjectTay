@@ -9,7 +9,7 @@ import Redis from './utilities/redis_helper.js';
 import './utilities/logging.js'; // Logging available globally
 import { initializeEnv } from './utilities/env_helper.js'; 
 
-log.info('Server is starting...', {context: 'Server'});
+log.info('Server is starting...', {context: 'Startup'});
 
 // Initialize environment variables
 initializeEnv('./config/.env.auth.development');
@@ -18,7 +18,7 @@ const app = express();
 
 // Log incoming requests
 app.use((req, res, next) => {
-    log.info(`Request: ${req.method} ${req.url}`, { context: 'AuthRoutes' });
+    log.info(`Request: ${req.method} ${req.url}`, { context: 'Routes' });
     res.on('finish', () => {
         log.info(`Response: ${res.statusCode} for ${req.method} ${req.url}`);
     });
@@ -33,9 +33,9 @@ const jwtMiddleware = expressjwt({ secret, algorithms: ['HS256'] });
 app.use(express.json()); // Parse JSON bodies
 
 app.post('/auth/login', async (req, res) => {
-    log.info('Login request received.', { context: 'Login Endpoint' });
+    log.info('Login request received.', { context: 'Routes' });
     if (!req.body.username || !req.body.password) {
-        log.warn('Login failed: Missing username or password.', { context: 'Login' });
+        log.warn('Login failed: Missing username or password.');
         return res.status(400).json({ error: 'Username and password are required.' });
     } else {
       const username = req.body.username;
@@ -50,26 +50,27 @@ app.post('/auth/login', async (req, res) => {
 });
 
 app.post('/auth/token/verify', async (req, res) => {
-  const tokenValue = req.body.token; // Renamed to avoid shadowing
+  const tokenValue = req.body.token;
+ 
   if (!tokenValue) {
     return res.status(400).json({ valid: false, error: 'Token is required.' });
   }
 
   let isRefresh = false; // Default to false
+
   if (req.query.isRefreshToken) {
     try {
       isRefresh = JSON.parse(req.query.isRefreshToken.toLowerCase());
     } catch (parseError) {
-      log.warn('Failed to parse isRefreshToken query parameter.', { context: 'Token Verification' });
+      log.warn('Invalid isRefreshToken query parameter.', { context: 'Route' });
       return res.status(400).json({ valid: false, error: 'Invalid isRefreshToken query parameter.' });
     }
   }
-
   try {
-    log.info('/verify...', { context: 'Token Verification' });
-    const decoded = await token.verifyToken(tokenValue, isRefresh); // Now correctly calls the imported token object
+    const decoded = await token.verifyToken(tokenValue, isRefresh); 
     if (decoded) {
-      return res.status(200).json({ valid: true, decoded });
+      //Success
+      return res.status(200).json({ valid: true, expires: decoded.exp, username: decoded.username });
     } else {
       return res.status(401).json({ valid: false, error: 'Invalid token.' });
     }
@@ -153,7 +154,7 @@ app.post('/auth/user', async (req, res) => {
   if (response) {
     res.status(201).json({ message: 'User registered successfully.' });
   } else {
-    res.status(400).json({ error: 'Username already taken.' });
+    res.status(409).json({ error: 'Username already taken.' }); // Changed from 400 to 409
   }
 });
 
@@ -206,5 +207,5 @@ app.use((req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  log.info(`Auth is up, go for it! ${PORT}`);
+  log.info(`Auth is up on ${PORT}, Go for it!`, { context: 'Startup'});
 });

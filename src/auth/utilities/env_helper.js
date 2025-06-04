@@ -8,5 +8,5 @@ export function initializeEnv(envFilePath) {
     const __dirname = path.dirname(__filename);
     const envPath = path.resolve(__dirname, envFilePath);
     dotenv.config({ path: envPath });
-    log.info(`Environment variables initialized.`);
+    log.info(`Environment variables initialized.`, { context: 'Startup' });
 }

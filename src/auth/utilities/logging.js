@@ -40,7 +40,7 @@ const log = winston.createLogger({
     ]
 });
 
-log.info('Logging initialized successfully.');
+log.info('Logging initialized successfully.', { context: 'Startup' });
 
 // Attach the logger to the global object
 global.log = log;
