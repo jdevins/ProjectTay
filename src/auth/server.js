@@ -53,7 +53,7 @@ app.post('/auth/token/verify', async (req, res) => {
   const tokenValue = req.body.token;
  
   if (!tokenValue) {
-    return res.status(400).json({ valid: false, error: 'Token is required.' });
+    return res.status(403).json({ valid: false, error: 'Token is required.' });
   }
 
   let isRefresh = false; // Default to false
@@ -68,9 +68,9 @@ app.post('/auth/token/verify', async (req, res) => {
   }
   try {
     const decoded = await token.verifyToken(tokenValue, isRefresh); 
-    if (decoded) {
+    if (decoded && decoded.valid) {
       //Success
-      return res.status(200).json({ valid: true, expires: decoded.exp, username: decoded.username });
+      return res.status(200).json({ valid: true, expires: decoded.exp, username: decoded.username, id: decoded.jti });
     } else {
       return res.status(401).json({ valid: false, error: 'Invalid token.' });
     }
@@ -81,21 +81,14 @@ app.post('/auth/token/verify', async (req, res) => {
 });
 
 app.post('/auth/token/refresh', async (req, res) => {
-  const refreshToken = req.body.token;
-
-  const decoded = await token.verifyToken(refreshToken, true);
-  if (!decoded) {
-    return res.status(401).json({ valid: false, error: 'Invalid refresh token.' });
+  const refreshToken = req.body.refreshToken;
+  const newTokens = await token.refreshAuthToken(refreshToken); // Refresh the auth token using the refresh token
+  if (newTokens.success) {
+    return res.status(200).json({ authToken: newTokens.token, expires: newTokens.tokenExp });
+  } else {
+    log.warn('Refresh token failed:', { error: newTokens.error });
+    return res.status(401).json({ valid: false, error: newTokens.error || 'Invalid refresh token.' });
   }
-  if (decoded.type == 'refresh') {
-    const authToken = await token.generateAuthToken(decoded.username);
-    const newRefreshToken = await token.generateRefreshToken(decoded.username);
-    if (!authToken || !newRefreshToken) {
-      return res.status(401).json({ valid: false, error: 'Error generating new tokens.' });
-    }
-    return res.status(200).json({ authToken, refreshToken: newRefreshToken });
-  }
-  res.send({ refreshToken });
 });
 
 app.get('/auth/protected', jwtMiddleware, (req, res) => {

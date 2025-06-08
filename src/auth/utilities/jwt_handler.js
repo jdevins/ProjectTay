@@ -17,9 +17,9 @@ class Token {
     //Not DRY but keeps them distinct across all references.
     async generateAuthToken(username) {
         const tokenType = 'auth';
-        const expiresIn = this.authExp;
+        const expiresIn = this.authExp; //1 hour by default
         const token = jwt.sign(
-            { username, tokenType }, // Only custom claims in payload
+            { username, tokenType },
             this.authSecret,
             {
                 expiresIn,
@@ -33,10 +33,9 @@ class Token {
         return { token, tokenExp }; 
     }
     
-    //Not DRY but keeps them distinct across all references.
     async generateRefreshToken(username) {
         const tokenType = 'refresh';
-        const expiresIn = this.refreshExp;
+        const expiresIn = this.refreshExp; 
         const token = jwt.sign(
             { username, tokenType },
             this.refreshSecret,
@@ -59,7 +58,7 @@ class Token {
 
         try {
             const verified = jwt.verify(token, secret);
-            
+            console.log("Verified token payload:", verified); // Add this line for debugging
             //Check claims
             if (verified.aud !== this.audience) {
                 log.warn("Invalid audience:", verified.aud);
@@ -74,7 +73,7 @@ class Token {
             }
             
             //Success
-            return { valid: true, exp: new Date(verified.exp * 1000) };
+            return verified;
             
         } catch (error) {
             if (error.name === 'TokenExpiredError') {
@@ -89,6 +88,22 @@ class Token {
             }
         }
     }
+
+    async refreshAuthToken(refreshToken) {
+        // Verify the refresh token
+        const verified = await this.verifyToken(refreshToken, true);
+        if (!verified || verified.valid === false) {
+            log.warn('Refresh token invalid or expired.');
+            return { success: false, error: verified.error || 'Invalid refresh token' };
+        }
+
+        // Generate new auth token
+        const { username } = verified;
+        const { token: newAuthToken, tokenExp } = await this.generateAuthToken(username);
+        
+        log.info('Auth token refreshed using valid refresh token.');
+        return { success: true, token: newAuthToken, tokenExp };
+    }
     
     async decodeToken(token) {
         try {
@@ -102,19 +117,6 @@ class Token {
         } catch (error) {
             log.error('Token decoding failed:', error);
             return false;
-        }
-    }
-    
-    async cacheAuthToken(userId, authToken) {
-        const key = `Token.Auth:${userId}`; 
-        const expiration = 62 * 60; // 1 hour (2 min buffer)
-
-        try {
-            await Redis.set(key, authToken); 
-            await Redis.expire(key, expiration);
-            log.info(`Auth token cached for user ${userId} with 1-hour expiration.`);
-        } catch (error) {
-            log.error('Error caching auth token:', error);
         }
     }
 
