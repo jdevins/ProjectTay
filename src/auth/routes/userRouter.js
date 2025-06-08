@@ -95,4 +95,30 @@ router.get('/:id', jwtMiddleware, async (req, res) => {
   }
 });
 
+router.get('/checkusername', async (req, res) => {
+  const username = req.query.username; // Changed from req.body.username
+
+  if (!username) {
+    return res.status(400).json({ error: 'Username is required.' });
+  }
+
+  try {
+    const isAvailable = await findUserByName(username);
+    if (isAvailable) {
+      return res.status(200).json({ username: username, available: false });
+    }
+
+    const isBanned = banFilter(username); 
+    if (isBanned) {
+      return res.status(200).json({ username: username, allowed: false });
+    } else {
+      return res.status(200).json({ username: username, allowed: true });
+    }
+  } catch (error) {
+    console.error('Error checking username availability:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
 export default router;
