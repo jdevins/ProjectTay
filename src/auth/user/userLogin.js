@@ -30,7 +30,6 @@ export async function userLogin(username,password) {
     } 
     
     //Return Tokens
-    console.log("--Login Success--"); 
     return {authToken:authToken, refreshToken:refreshToken}; 
 
 }
