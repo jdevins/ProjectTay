@@ -16,15 +16,6 @@ const log = winston.createLogger({
                 printf((info) => `${info.timestamp} [${info.level}] [${info.context || 'General'}]: ${info.message}`)
             )
         }),
-        new winston.transports.File({
-            filename: 'log_auth.log',
-            format: printf((info) => JSON.stringify({
-                timestamp: info.timestamp,
-                level: info.level,
-                context: info.context || 'General',
-                message: info.message
-            }))
-        }),
         new winston.transports.DailyRotateFile({
             filename: 'log_%DATE%._auth.log', // Add date pattern to filename
             datePattern: 'YYYY-MM-DD', 
