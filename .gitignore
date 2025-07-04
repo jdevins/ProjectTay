@@ -14,5 +14,5 @@ compose.yaml
 redis.conf
 src/auth/config/.env.auth.development
 logs/
-log_auth.log
-log_auth.log
+*.log
+
