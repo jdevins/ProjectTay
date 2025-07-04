@@ -1,4 +1,4 @@
-// Webserver setup
+/* // Webserver setup
 import express from "express";
 import path from 'path';
 import bodyParser from "body-parser";
@@ -47,4 +47,4 @@ app.get("../favicon.ico", (req, res) => {res.sendFile(path.join(__dirname, "../f
 // Port Listener
 app.listen(PORT, () => {
   console.log(`Web server running at http://localhost:${PORT}/`);
-});
+}); */

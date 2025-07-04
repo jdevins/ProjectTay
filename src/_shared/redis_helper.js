@@ -1,6 +1,5 @@
-/* import { createClient } from 'redis';
-import { DbKvStore } from '../models/dbKVmodel.js'; // Import KeyValueStore class
-import log from './logging.js'; // Import the logger for logging errors and info
+import { createClient } from 'redis';
+import { DbKvStore } from '../auth/models/dbKVmodel.js'; 
 
 class Redis {
     constructor() {
@@ -20,7 +19,7 @@ class Redis {
                 if (err.code === 'ECONNREFUSED') {
                     log.error('Redis connection refused:', err);
                 } else {
-                    lof.error('Redis Client Error:', err);
+                    log.error('Redis Client Error:', err);
                 }
             });
 
@@ -38,7 +37,7 @@ class Redis {
         }
     }
 
-    async fallbackToDB() {
+    async fallbackToDB(method, ...args) {
         log.warn('Redis client is not initialized. Falling back to DB storage.');
         return await DbKvStore[method](...args);
     }
@@ -151,4 +150,4 @@ process.on('SIGTERM', async () => {
     process.exit(0);
 });
 
-export default Redis; */
+export default Redis;

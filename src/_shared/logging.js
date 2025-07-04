@@ -1,4 +1,4 @@
-/* import * as winston from 'winston';
+import * as winston from 'winston';
 import 'winston-daily-rotate-file'; // Import the daily rotate file transport
 
 const { combine, timestamp, printf, colorize } = winston.format;
@@ -36,6 +36,3 @@ log.info('Logging initialized successfully.', { context: 'Startup' });
 // Attach the logger to the global object
 global.log = log;
 export default log; // Export the logger for use in other modules
-
-
- */

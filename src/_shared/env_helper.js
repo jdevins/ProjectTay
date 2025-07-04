@@ -1,4 +1,3 @@
-/* import log from '../../_shared/logging.js'; // Explicitly import the logger
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -10,4 +9,3 @@ export function initializeEnv(envFilePath) {
     dotenv.config({ path: envPath });
     log.info(`Environment variables initialized.`, { context: 'Startup' });
 }
- */

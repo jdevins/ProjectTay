@@ -6,10 +6,10 @@
   "type": "module",
   "scripts": {
     "nodemon": "nodemon src/auth/server.js",
-    "web": "node src/web/server.js",
+    "web": "cd src/web && npm run dev",
     "api": "node src/api/server.js",
     "auth": "node src/auth/server.js",
-    "dev": "concurrently \"npm run nodemon\" \"npm run api\" \"npm run web\" \"npm run auth\"",
+    "dev": "concurrently \"npm run nodemon\" \"npm run api\" \"npm run web\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -1,13 +1,12 @@
 import express from 'express';
 import { expressjwt } from 'express-jwt'; 
-import token from './utilities/jwt_handler.js';
-import './utilities/logging.js'; // Logging available globally
-import { initializeEnv } from './utilities/env_helper.js'; 
+import '../_shared/logging.js'; // Logging available globally
+import { initializeEnv } from '../_shared/env_helper.js'; 
 import authRouter from './routes/authRouter.js';
 import userRouter from './routes/userRouter.js';
 import utilityRouter from './routes/utilityRouter.js';
 
-log.info('Server is starting...', {context: 'Startup'});
+log.info('Auth starting...', {context: 'Startup'});
 
 // Initialize environment variables
 initializeEnv('./config/.env.auth.development');
@@ -75,7 +74,21 @@ app.use((req, res) => {
 });
 
 // Port
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  log.info(`Auth is up on ${PORT}, Go for it!`, { context: 'Startup'});
+const PORT = process.env.PORT;
+const server = app.listen(PORT, () => {
+  log.info(`Auth is up on ${PORT}`, { context: 'Startup'});
 });
+
+  process.on('SIGTERM', () => {
+          server.close(() => {
+            log.info('Auth server SIGTERM', { context: 'Shutdown' });
+            process.exit(0);
+          });
+        });
+  
+  process.on('SIGINT', () => {
+          server.close(() => {
+            log.info('Auth server SIGINT', { context: 'Shutdown' });
+            process.exit(0);
+          });
+        });

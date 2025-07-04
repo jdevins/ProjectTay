@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import Redis from './redis_helper.js';
+import Redis from '../../_shared/redis_helper.js'; // Adjust the path as needed
 import crypto from 'crypto';
 
 class Token {
