@@ -16,3 +16,4 @@ src/auth/config/.env.auth.development
 logs/
 *.log
 
+src/web-archive/config/.env.web.development
