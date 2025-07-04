@@ -1,5 +1,4 @@
 import express from 'express';
-import '../utilities/logging.js';
 import { expressjwt } from 'express-jwt';  
 import { userLogin } from '../user/userLogin.js';
 import { listUsers,findUserByID,findUserByName } from '../models/userModel.js'; 

@@ -1,5 +1,4 @@
 import express from 'express';
-import '../utilities/logging.js'; // Logging available globally
 import { expressjwt } from 'express-jwt';  
 import token from '../utilities/jwt_handler.js';
 

@@ -1,5 +1,4 @@
 import express from 'express';
-import '../utilities/logging.js';
 import { expressjwt } from 'express-jwt';  
 import { banFilter } from '../utilities/banned_text.js'; 
 import Redis from '../../_shared/redis_helper.js'; 
